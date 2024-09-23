@@ -869,7 +869,7 @@ The INSERT INTO statement is used to insert new records in a table.
 
 INSERT INTO Syntax
 ------------------
-It is possible to write the INSERT INTO statement in two ways:
+It is possible to write the INSERT INTO statement in three ways:
 
 
 
@@ -905,3 +905,573 @@ Example ---->
 
 
 
+3. If you are adding values for a specific column so you want to declared specific column name or according values.
+
+Syntax ----->
+            INSERT INTO Customers('name','salary')
+            VALUES ('Ram jain', 34);
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+                                                MySQL NULL Values
+                                                -----------------
+What is a NULL Value?
+---------------------
+A field with a NULL value is a field with no value.
+
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value.
+
+Note: A NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one     that has been left blank during record creation!
+
+
+
+
+How to Test for NULL Values?
+----------------------------
+It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+We will have to use the IS NULL and IS NOT NULL operators instead.
+
+
+
+
+The IS NULL Operator
+--------------------
+The IS NULL operator is used to test for empty values (NULL values).
+The following SQL lists all customers with a NULL value in the "Address" field:
+
+Example ---->
+            SELECT CustomerName, ContactName, Address
+            FROM Customers
+            WHERE Address IS NULL;
+
+
+
+The IS NOT NULL Operator
+------------------------
+The IS NOT NULL operator is used to test for non-empty values (NOT NULL values).
+The following SQL lists all customers with a value in the "Address" field:
+
+Example ---->
+            SELECT CustomerName, ContactName, Address
+            FROM Customers
+            WHERE Address IS NOT NULL;
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+                                        MySQL UPDATE Statement
+                                        ----------------------
+
+The MySQL UPDATE Statement
+--------------------------
+The UPDATE statement is used to modify the existing records in a table.
+
+UPDATE Syntax ---->
+                    UPDATE table_name
+                    SET column1 = value1, column2 = value2, ...
+                    WHERE condition;
+
+
+
+Note: Be careful when updating records in a table! Notice the WHERE clause in the UPDATE statement. The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, all records in the table will be updated!
+
+
+Example to update single record---->
+                                    UPDATE employee     
+                                    SET name='Vijay Goyal',city="indore"
+                                    where id = 1;
+
+
+Example to update Multiple record---->
+                                    UPDATE employee     
+                                    SET pincode=452006
+                                    where city = 'indore';
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+                                        MySQL DELETE Statement
+                                        ----------------------
+The MySQL DELETE Statement
+--------------------------
+The DELETE statement is used to delete existing records in a table.
+
+DELETE Syntax ---->
+-------------
+                DELETE FROM table_name WHERE condition;
+
+
+
+Note: Be careful when deleting records in a table! Notice the WHERE clause in the DELETE statement. The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!
+
+
+
+Example ---->
+    (i) Delete from company_db where id=1;
+    (2) Delete from company_db where city = 'indore';
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+                                          MySQL LIMIT Clause and OFFSET
+                                        -------------------------------
+
+Limit => Limit ka mtlb hota he ki aapko kitne records show karna he table me se.
+Offset => Offset ka mtlb hota he ki aapko kitne record chhod kar data dikhana he 
+
+The MySQL LIMIT Clause
+----------------------
+The LIMIT clause is used to specify the number of records to return.
+The LIMIT clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+
+LIMIT Syntax ---->
+                    SELECT column_name(s)
+                    FROM table_name
+                    WHERE condition
+                    LIMIT number;
+
+
+
+LIMIT and OFFSET example ---->
+-------------------------
+Find the second highest salary using limit and Offset.
+
+                Select * from employees 
+                order by salary desc
+                limit 1 Offset 1;
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+                                        
+                                        Aggregation Function 
+                                        --------------------
+
+There are 5 types of Aggregation function available in SQL
+min,max,avg,sum,count
+
+
+
+MySQL MIN() and MAX() Functions
+--------------------------------
+The MIN() function returns the smallest value of the selected column.
+
+The MAX() function returns the largest value of the selected column.
+
+
+MIN() Syntax ---->
+------------
+                    SELECT MIN(column_name)
+                    FROM table_name
+                    WHERE condition;
+
+
+MAX() Syntax ---->
+------------
+                    SELECT MAX(column_name)
+                    FROM table_name
+                    WHERE condition;
+
+
+
+
+
+MySQL COUNT(), AVG() and SUM() Functions
+------------------------------------------
+
+The COUNT() function returns the number of rows that matches a specified criterion.
+
+COUNT() Syntax ---->
+--------------
+                SELECT COUNT(column_name)
+                FROM table_name
+                WHERE condition;
+
+
+The AVG() function returns the average value of a numeric column. 
+
+AVG() Syntax ---->
+------------
+                SELECT AVG(column_name)
+                FROM table_name
+                WHERE condition;
+                The SUM() function returns the total sum of a numeric column. 
+
+SUM() Syntax ---->
+------------
+                SELECT SUM(column_name)
+                FROM table_name
+                WHERE condition;
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+                                        MySQL LIKE Operator
+                                        -------------------
+
+The MySQL LIKE Operator
+-----------------------
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+
+(1) The percent sign (%) represents zero, one, or multiple characters
+(2) The underscore sign (_) represents one, single character
+
+
+The percent sign and the underscore can also be used in combinations!
+
+
+
+
+
+LIKE Syntax ---->
+-----------
+                SELECT column1, column2, ...
+                FROM table_name
+                WHERE columnN LIKE pattern;
+
+
+Tip: You can also combine any number of conditions using AND or OR operators.
+
+
+
+LIKE Operator	Description
+WHERE CustomerName LIKE 'a%'	        Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	        Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	        Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	        Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%'	        Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%'	        Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	        Finds any values that start with "a" and ends with "o"
+
+
+
+
+
+SQL LIKE Examples ---->
+-----------------
+The following SQL statement selects all customers with a CustomerName starting with "a":
+
+Example ---->
+            SELECT * FROM Customers
+            WHERE CustomerName LIKE 'a%';
+
+
+Note ----> 
+%   ----> Represents zero or more characters	
+_   ----> Represents a single character	
+
+-----------------------------------------------------------------------------------------------------------------------
+
+                                    MySQL IN Operator
+                                    -----------------
+
+The MySQL IN Operator
+---------------------
+The IN operator allows you to specify multiple values in a WHERE clause.
+
+The IN operator is a shorthand for multiple OR conditions.
+
+
+
+IN Syntax ---->
+--------
+                SELECT column_name(s)
+                FROM table_name
+                WHERE column_name IN (value1, value2, ...);
+
+
+Example ---->
+--------
+                SELECT * FROM Customers
+                WHERE Country IN ('Germany', 'France', 'UK');
+
+                SELECT * FROM Customers
+                WHERE Country NOT IN ('Germany', 'France', 'UK');
+
+
+----------------------------------------------------------------------------------------------------------------------- 
+
+                                            MySQL BETWEEN Operator
+                                            ----------------------
+
+The MySQL BETWEEN Operator
+--------------------------
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+The BETWEEN operator is inclusive: begin and end values are included.
+
+
+
+
+BETWEEN Syntax ---->
+--------------
+                    SELECT column_name(s)
+                    FROM table_name
+                    WHERE column_name BETWEEN value1 AND value2;
+
+
+
+BETWEEN Example ---->
+---------------
+The following SQL statement selects all products with a price between 10 and 20:
+
+                    SELECT * FROM Products
+                    WHERE Price BETWEEN 10 AND 20;
+
+
+
+NOT BETWEEN Example ---->
+-------------------
+To display the products outside the range of the previous example, use NOT BETWEEN:
+
+                    SELECT * FROM Products
+                    WHERE Price NOT BETWEEN 10 AND 20;  
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+                                            MySQL Aliases
+                                            -------------
+
+
+Aliases are used to give a table, or a column in a table, a temporary name.
+
+Aliases are often used to make column names more readable.
+
+An alias only exists for the duration of that query.
+
+An alias is created with the AS keyword.
+
+
+
+
+
+Alias Column Syntax ---->
+-------------------
+                    SELECT column_name AS alias_name
+                    FROM table_name;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+                                                MySQL Joins
+                                                -----------
+
+
+MySQL Joining Tables
+--------------------
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+
+Supported Types of Joins in MySQL
+---------------------------------
+INNER JOIN: Returns records that have matching values in both tables
+LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
+CROSS JOIN: Returns all records from both tables
+
+
+
+
+
+MySQL INNER JOIN Keyword
+------------------------
+The INNER JOIN keyword selects records that have matching values in both tables
+
+INNER JOIN Syntax ---->
+-----------------
+                        SELECT column_name(s)
+                        FROM table1
+                        INNER JOIN table2
+                        ON table1.column_name = table2.column_name;
+
+
+
+MySQL LEFT JOIN Keyword
+-----------------------
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records (if any) from the right table (table2).
+
+LEFT JOIN Syntax ---->
+-----------------
+                        SELECT column_name(s)
+                        FROM table1
+                        LEFT JOIN table2
+                        ON table1.column_name = table2.column_name;
+
+
+MySQL RIGHT JOIN Keyword
+------------------------
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records (if any) from the left table (table1).
+
+
+RIGHT JOIN Syntax ---->
+                        SELECT column_name(s)
+                        FROM table1
+                        RIGHT JOIN table2
+                        ON table1.column_name = table2.column_name;
+
+
+
+
+
+
+SQL CROSS JOIN Keyword
+----------------------
+A CROSS JOIN in SQL returns the Cartesian product of two tables. This means that it combines every row from the first table with every row from the second table, regardless of any relationship or matching condition between them.
+
+
+CROSS JOIN Syntax ---->
+-----------------
+                        SELECT column_name(s)
+                        FROM table1
+                        CROSS JOIN table2;
+
+
+
+
+MySQL Self Join
+---------------
+A self join is a regular join, but the table is joined with itself
+
+Self Join SQL mein ek aisi join hoti hai jisme ek hi table ko khud ke sath join kiya jata hai. Self Join ka use tab hota hai jab ek table ke records ko usi table ke dusre records ke sath compare ya relate karna hota hai.
+
+
+Self Join ka concept samajhne ke liye:
+-------------------------------------
+Table ko do alag-alag naam (aliases) dekar treat kiya jata hai, jaise ki wo do alag tables ho.
+Self Join ko usually use kiya jata hai hierarchical ya parent-child relationships ko represent karne ke liye.
+
+
+
+Self Join Syntax ---->
+----------------
+                        SELECT column_name(s)
+                        FROM table1 T1, table1 T2
+                        WHERE condition;
+
+
+
+
+Example ke sath samjhte hain:
+----------------------------
+
+
+Table ka naam: Employees
+
+employee_id	employee_name	manager_id
+    1	        John	        NULL
+    2	        Mike	        1
+    3	        Sara	        1
+    4	        Tom	            2
+    5	        Emma	        3
+
+
+
+Yaha pe manager_id column employee ka manager ka ID batata hai, jo isi table me employee_id se refer hota hai.
+
+Self Join ka use karke employees aur unke managers ko retrieve karna:
+--------------------------------------------------------------------
+                    SELECT e.employee_name AS Employee, m.employee_name AS Manager
+                    FROM Employees e
+                    LEFT JOIN Employees m
+                    ON e.manager_id = m.employee_id;
+
+
+Output:
+------
+
+Employee	Manager
+ John	     NULL
+ Mike	     John
+ Sara	     John
+ Tom	     Mike
+Emma	     Sara
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+                                                MySQL UNION Operator
+                                                ---------------------
+
+
+The MySQL UNION Operator
+------------------------
+SQL mein UNION ka use multiple SELECT queries ke results ko combine karne ke liye hota hai. Ye distinct (unique) rows ko merge karta hai, matlab agar same row do queries me aa rahi ho, to result me wo sirf ek baar show hogi.
+
+
+Key Points of UNION:
+-------------------
+Unique Records:-- UNION same rows ko duplicate hone nahi deta. Agar ek hi row do queries ke result me aa rahi ho, to final output me wo sirf ek baar aayegi.
+S
+ame Number of Columns:-- UNION lagane wali queries me column ka count same hona chahiye aur corresponding columns ka data type bhi compatible hona chahiye.
+
+Column Names:-- Final result me jo column names aayenge wo pehli SELECT query se honge
+
+
+UNION Syntax ---->
+------------
+                    SELECT column_name(s) FROM table1
+                    UNION
+                    SELECT column_name(s) FROM table2;
+
+
+
+
+Example: ---->
+-------
+Table 1: Customers_India
+                    customer_id	    name	country
+                        1	        Raj	     India
+                        2	        Aman 	 India
+         
+               
+Table 2: Customers_USA
+                    customer_id	    name	country
+                        3	        John	USA
+                        4	        Mike	USA
+                        1	        Raj 	India
+
+
+Agar hum dono tables ke customers ko combine karna chahte hain:
+
+
+Query ---->
+            SELECT customer_id, name, country 
+            FROM Customers_India
+            UNION
+            SELECT customer_id, name, country 
+            FROM Customers_USA;
+
+
+
+Result:
+            customer_id	    name	country
+                1	        Raj	    India
+                2	        Aman	India
+                3	        John	USA
+                4	        Mike	USA
