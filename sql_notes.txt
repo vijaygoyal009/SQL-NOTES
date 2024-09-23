@@ -1475,3 +1475,78 @@ Result:
                 2	        Aman	India
                 3	        John	USA
                 4	        Mike	USA
+
+
+
+
+
+
+UNION ALL: 
+---------
+Agar aapko duplicate rows bhi dikhani ho, to aap UNION ALL use kar sakte ho. Ye duplicate records ko bhi show karega.
+
+Example ---->
+-------
+                    SELECT customer_id, name, country 
+                    FROM Customers_India
+                    UNION ALL
+                    SELECT customer_id, name, country 
+                    FROM Customers_USA;
+
+
+
+Result of UNION ALL:
+                    customer_id	    name	country
+                        1	        Raj	     India
+                        2	        Aman	 India
+                        3	        John	 USA
+                        4	        Mike	 USA
+                        1	        Raj	     India
+
+
+Summary:
+
+UNION: Duplicate records ko remove karta hai.
+UNION ALL: Sabhi records ko, including duplicates, show karta hai.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+                                    MySQL GROUP BY Statement
+                                    ------------------------
+
+MySQL ka GROUP BY statement use hota hai jab hume kisi column ke unique values ke basis pe rows ko group karna hota hai. Ye aggregation ke sath commonly use hota hai, jaise COUNT(), SUM(), AVG(), etc., takki hum specific group ke liye calculation kar sakein.
+
+Syntax:---->
+------
+            SELECT column_name(s), aggregate_function(column_name)
+            FROM table_name
+            WHERE condition
+            GROUP BY column_name(s);
+
+
+Example:---->
+-------
+Maan lo tumhare paas ek employees table hai, jisme employees ka department aur salary ki details hain. Ab agar tumhe har department ki total salary nikalni hai, to tum GROUP BY ka use kar sakte ho.
+
+            SELECT department, SUM(salary) AS total_salary
+            FROM employees
+            GROUP BY department;
+
+
+
+Is query me humne department ke hisaab se employees ko group kiya hai aur har department ki total salary ko calculate kiya hai using SUM() function.
+
+
+Important Points:
+-----------------
+GROUP BY ke sath jo bhi column use karte ho, wo SELECT clause me hona chahiye.
+GROUP BY ke sath aggregate functions (jaise COUNT(), MAX(), SUM(), etc.) ka use hota hai to perform calculations on grouped data.
+GROUP BY hamesha WHERE ke baad aur ORDER BY se pehle aata hai.
+
+
+-----------------------------------------------------------------------------------------------------------------------
