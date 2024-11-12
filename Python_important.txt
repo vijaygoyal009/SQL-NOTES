@@ -1,0 +1,200 @@
+1. Features of Python.
+
+Answer --> 
+    1. Easy to Learn and Use
+    2. Open-Source and Free
+    3. Interpreted Language
+    4. Cross-Platform
+    5. Object-Oriented and Procedural
+    6. Large Standard Library
+    7. Dynamically Typed
+    8. High-Level Language
+    9. Integration Friendly
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+2. Data types in Python.
+Answer -->
+    Data type is a classification of like which type of value variable can hold.
+    In python there are various type of data type available
+ 
+
+    Numeric	            int, float, complex	            10, 3.14, 2+3j
+    Text	            str	                            "Python"
+    Sequence	        list, tuple, range	            [1, 2, 3], (4, 5), range(5)
+    Set	                set, frozenset	                {1, 2, 3}, frozenset([4, 5])
+    Mapping	            dict	                        {"key": "value"}
+    Boolean	            bool	                        True, False
+    Binary	            bytes, bytearray, memoryview	b"data", bytearray(5)
+    None	            NoneType                       	None
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+3. Set and Frozenset in Python ?
+Answer -->
+
+    1. What is a Set?
+
+        A set is a collection of unique and unordered elements in Python.
+
+        Key Points:
+        Mutable: You can add or remove elements.
+        No Duplicates: Automatically removes duplicate elements.
+        Unordered: No indexing or slicing (e.g., no set[0]).
+        Optimized for Membership Testing: Checking if an item exists in a set is fast.
+
+        Example --->
+
+            my_set = {1, 2, 3, 4, 4}  # Duplicates are removed
+            print(my_set)  # Output: {1, 2, 3, 4}
+
+            my_set.add(5)  # Add an element
+            my_set.remove(2)  # Remove an element
+            print(my_set)  # Output: {1, 3, 4, 5}
+
+
+
+    2. What is a Frozenset?
+        A frozenset is an immutable version of a set. Once created, it cannot be changed (no adding or removing elements).
+
+        Key Points:
+        Immutable: Cannot be modified after creation.
+        Hashable: Can be used as a key in a dictionary or an element in another set.
+        Unordered: Like a set, it does not support indexing or slicing.
+
+        Example -->
+
+        my_frozenset = frozenset([1, 2, 3, 4])
+        print(my_frozenset)  # Output: frozenset({1, 2, 3, 4})
+
+        # Immutable, so these operations are not allowed:
+        # my_frozenset.add(5) -> Raises AttributeError
+        # my_frozenset.remove(2) -> Raises AttributeError
+
+
+    3. Differences Between Set and Frozenset ?
+
+        Feature	                        Set	                            Frozenset
+        Mutability	                    Mutable	                        Immutable
+        Duplicates Allowed	             No	                                No
+        Hashable	                     No	            Yes (can be used as a dictionary key or set element)
+        Modifications	    Supports adding/removing elements	Does not allow modifications
+        Usage	                    Dynamic collections	Fixed collections (e.g., when elements shouldn't change)
+
+
+_____________________________________________________________________________________________________________________
+
+
+4. Tuple and list in Python.
+Answer -->
+
+        List --> List is a collection of iteams. list store different type of data like int , float , str , bool etc.
+                 list is a mutable means once we define so we can change the structure we can add something we can delete something and also we can add something.list is a ordered collection. and list is define using square bracets [].
+
+        Tuple --> Tuple is a collection of iteam. tuple is also store different type of data like int , 
+                float ,str , bool etc. tuple is immutable means once we define tuple so we can not change the structure means we can not add , delete , update and etc. tuple is also ordered collection. and its defined using paranthesis ().
+
+
+
+    Differences between List and Tuple
+    ___________________________________
+
+                        List                                               Tuple
+        1.  List is a Mutable. means once we defined            Tuple is a Immutable means once we defined so we can
+            so we can change the structure we can               not change the structure we can not update ,delete,
+            add , delete , update list element.                 and add.
+
+        2. List is defined using square brackets[].             Tuple is defined using parentheses ().
+
+        3. List is Slow.                                        Tuple is Fast    
+
+        4. List consume more memory Because it is               Tuple Consume less memory Because it is a Fixed
+           Dynamic collection.                                  collection.
+
+        5. List can store any type of data.                     Tuple can also store any type of data.
+
+        6. Lists are not hashable                               Tuples are hashable (can be used as dictionary 
+           (cannot be used as dictionary keys).	                keys if they contain only hashable objects).
+           
+
+
+
+_____________________________________________________________________________________________________________________
+
+5. Generators and iterators ?
+Answer-->
+________
+
+        Iterators --> 
+        __________
+        An iterator is a powerful concept in Python that helps you to access the elements of a collection one at a time, But iterator store whole collection in a memory. so it comsume more memory. but whenever we working of large data set and we want to access one value at a time so we can use iterator
+
+        It implements two special methods:
+
+        1. __iter__(): This method initializes the iterator and returns the iterator object itself.
+        2. __next__(): This method returns the next element in the collection. When there are no more elements to   iterate over, it raises a StopIteration exception.
+
+
+
+        Example -->
+
+        l = [1,2,3,4,5,6,7,8,9,10]
+
+        it = iter(l)
+
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))
+        print(next(it))  # Give stopIteration error
+
+
+
+        Generator --->
+        ___________
+
+        A generator in Python is a special type of iterator that allows you to iterate over a sequence of values, but unlike a normal iterator, it doesn't store the entire sequence in memory at once. Instead, a generator produces each value on the fly (lazily) when requested, making it more memory-efficient, especially when working with large data sets or streams of data.
+
+        
+        Defining a Generator in Python
+        ______________________________
+
+        A generator is defined using a function, but instead of using return, it uses yield. When yield is used, the function becomes a generator.
+
+
+        Example ->
+        _________
+
+        # A generator function that yields numbers from 1 to 5
+        def my_generator():
+            for i in range(1, 6):
+                yield i  # Yielding one value at a time
+
+        # Create a generator object
+        gen = my_generator()
+
+        # Access the values one by one using next()
+        print(next(gen))  # Output: 1
+        print(next(gen))  # Output: 2
+        print(next(gen))  # Output: 3
+        print(next(gen))  # Output: 4
+        print(next(gen))  # Output: 5
+
+
+
+_____________________________________________________________________________________________________________________
+
+
