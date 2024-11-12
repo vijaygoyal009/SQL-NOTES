@@ -198,3 +198,33 @@ ________
 _____________________________________________________________________________________________________________________
 
 
+6. iter() and next() in Python.
+Answer ->
+________
+
+    1. iter() Function:
+    ___________________
+    The iter() function is used to convert an iterable (like a list, tuple, or string) into an iterator and if you print the iterator so its return the iterator objects.
+
+
+    2. next() Function:
+    ___________________
+    The next() function is used to get the next item from the iterator, one at a time.
+
+    How next() works:
+    Each time you call next(), it returns the next item in the sequence.
+    If the iterator is exhausted (all items have been returned), next() raises a StopIteration exception.
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+7. Multithreading and multiprocessing in Python.
+Answer -->
+_______
+
+    Multithreading -->
+    ______________
+
+    Multithreading is a technique where a program can perform multiple tasks simultaneously by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
