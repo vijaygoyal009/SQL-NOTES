@@ -227,4 +227,326 @@ _______
     Multithreading -->
     ______________
 
-    Multithreading is a technique where a program can perform multiple tasks simultaneously by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
+    Multithreading is a technique where a program can perform multiple tasks At the same time by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
+
+    In Python , we can use threding module to implements multithreading
+
+
+    Why Use Multithreading?
+    _______________________
+    
+    1. Concurrency: 
+        Allows multiple tasks to run at the same time, improving the responsiveness of applications.
+        Example: Handling user input while performing background computations.
+
+    2. Efficient I/O Operations: 
+        Useful for tasks like file reading, database queries, or network requests where threads can perform other operations while waiting for I/O to complete.
+
+
+    Basic Multithreading Example -
+    _____________________________
+    import threading
+    import time
+
+    def print_numbers():
+        for i in range(5):
+            print(f"Thread 1: {i}")
+            time.sleep(1)
+
+    def print_letters():
+        for ch in 'abcde':
+            print(f"Thread 2: {ch}")
+            time.sleep(1)
+
+    # Create threads
+    thread1 = threading.Thread(target=print_numbers)
+    thread2 = threading.Thread(target=print_letters)
+
+    # Start threads
+    thread1.start()
+    thread2.start()
+
+    # Wait for threads to complete
+    thread1.join()
+    thread2.join()
+
+    print("All threads have completed.")
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+8. What is Pickling and unpickling in Python ?
+Answer => pickling and unpickling is a process in python to serialize and deserialize python objects.
+
+
+Pickling -> Pickling is a process to convert python object like ( list,dictionary). into the byte stream 
+_________  means binary format. This byte stream can be stored in a file or transmitted over a network.
+
+
+
+Example of Pickling ->
+____________________
+import pickle
+
+# Data to pickle
+data = {"name": "Alice", "age": 25, "skills": ["Python", "Machine Learning"]}
+
+# Writing to a file
+with open("data.pkl", "wb") as file:
+    pickle.dump(data, file)
+
+print("Data has been pickled and saved to 'data.pkl'.")
+
+
+
+
+
+Unpickling -> Unpickling is a reverse process of pickling it convert the byte stream into the python objects 
+-----------   It reads the binary data and recreates the object in memory.
+
+
+
+
+Example of Unpickling ->
+----------------------
+
+import pickle
+
+with open("data.pkl", "rb") as file:
+    loaded_data = pickle.load(file)
+
+print("Unpickled data:", loaded_data)
+
+
+
+
+Why we use Pickling and unpickling ->
+-----------------------------------
+1. Data persistence: Save program data to a file for later use.
+2. Data sharing: Share Python objects between programs or processes.
+3. Complex data handling: Serialize Python-specific data types (e.g., custom classes) that JSON can't handle.
+4. Performance: Easier and faster for Python-only projects.
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+
+9. Currying in Python ?
+Answer ->
+
+Curring is a technique in the functional programming. Where a function that takes multiple arguments is converted into a sequence of functions, each function taking one argument.
+
+In simple terms, currying allows us to break down a function that takes several parameters into multiple smaller functions, each accepting a single argument.
+
+
+
+
+Why We Use Currying:
+____________________
+1. Reusability: We can partially apply a function by fixing some arguments and passing the remaining ones later.
+
+2. Cleaner Code: Currying helps break down the code into smaller, modular functions, making the code more readable and maintainable.
+
+3. Flexibility: Currying makes it easy to create new functions by applying some arguments first and using them later for different contexts.
+
+
+
+Example of curring :
+_______________________
+
+def multiply(x):
+    def multiply_by_y(y):
+        def multiply_by_z(z):
+            return x * y * z
+        return multiply_by_z
+    return multiply_by_y
+
+# Pehle ek argument fix karte hain
+partial_function = multiply(2)
+
+# Baad mein baaki arguments pass karenge
+result = partial_function(3)(4)  # 2 * 3 * 4 = 24
+print(result)  # Output: 24
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+10. Explain the concept of variable scoping in Python and provide examples of how global and local variables 
+    are accessed within different scopes.
+
+Answer ->
+
+Scope is the region or area in the program where a variable is defined and determines where that variable can be accessed or modified.
+
+Python follows a specific set of rules to look up and assign values to variables depending on where they are declared. This is  established by the LEGB rule:
+
+
+1. Local Scope ->A variable is in the local scope if it is defined inside a function. It can only be accessed 
+                    within that function.
+
+    Example -> 
+        def greet():
+        message = "Hello, World!"  # Local variable
+        print(message)
+
+        greet()
+        # print(message)  # Error! message is local to greet() function
+
+
+
+
+2. Global Scope
+A variable is in the global scope if it is defined outside of any function. It can be accessed both inside and outside functions.
+
+Example ->
+            x = 10  # Global variable
+
+            def print_x():
+                print(x)  # Accessing the global variable 'x'
+
+            print_x()  # Prints 10
+            print(x)   # Also prints 10 outside the function
+
+
+
+
+3.Enclosing Scope (Nested Functions)
+A variable in an enclosing scope refers to a variable that is defined in an outer (enclosing) function and can be accessed by an inner (nested) function.
+
+Example ->
+            def outer_function():
+                outer_var = "I'm in the outer function"  # Variable in outer function
+                
+                def inner_function():
+                    print(outer_var)  # Accessing variable from outer function
+                
+                inner_function()
+
+            outer_function()
+
+
+
+4. Built-in Scope
+Python provides a set of built-in functions and objects, like print(), len(), etc., which are always accessible and available globally.
+
+
+Example ->
+print(len("Hello"))
+
+
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+11. Shellow Copy and Deep Copy ?
+Answer -> 
+
+
+Whenever we work with mutable objects and want to create a copy, we have two types of copies available: shallow copy and deep copy.
+
+
+1. Shellow Copy => 
+
+A shallow copy creates a new object and copies the references of the nested objects instead of duplicating them. If you update a nested object in the copied object, the changes will also reflect in the original object because both share the same reference to the nested object.
+
+
+Example =>
+
+        import copy
+
+        original = [1, 2, [3, 4]]  # Original list with a nested list
+        shallow_copy = copy.copy(original)  # Create a shallow copy
+
+        # Modify the nested object in the copied list
+        shallow_copy[2][0] = 99
+
+        print("Original:", original)  # Output: [1, 2, [99, 4]]
+        print("Shallow Copy:", shallow_copy)  # Output: [1, 2, [99, 4]]
+
+
+        We can also use copy function 
+        Example =>
+
+        original = {1, 2, 3}
+        shallow_copy = original.copy()
+
+        print("Original:", original)
+        print("Shallow Copy:", shallow_copy)
+
+
+
+2. Deep Copy =>
+  
+  A deep copy creates a completely independent copy of an object. Unlike a shallow copy, a deep copy does not share references to nested objects between the original and the copy. If you make changes to the nested objects in the copy, it will not affect the original object.
+
+
+Example =>
+
+
+            import copy
+
+            l = [10,20,30,40,50,[1,2,3,4]]
+
+            deep_copy_example = copy.deepcopy(l)
+
+            # print(deep_copy_example)
+
+            deep_copy_example[5][1] = 20
+
+
+            print("origin :- ",l)
+            print("Copy :- ",deep_copy_example)
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+12. What is GIL (Global Interpreter Lock) ?
+Answer =>
+
+GIL stands for Global Interpreter Lock it is a mechanism that ensure that only one task executing at a time.
+This means that even if you have a multiple thread in your program. and only one thread  executing at a time.
+
+
+
+Why GIL exist in python
+_______________________
+Memory management: 
+
+The GIL helps to manage memory safely in Python, especially when there are multiple threads running. Without the GIL, threads could try to access and modify the same piece of memory simultaneously, causing race conditions and other bugs.
+
+
+
+How Does GIL Affect Multithreading?
+___________________________________
+1. Single-threaded performance (No problem with GIL)
+In a single-threaded program, the GIL is not an issue because there’s only one thread running. The program will work as expected, and it can take full advantage of the CPU core it’s running on.
+
+2. Multithreaded programs (GIL slows things down)
+In a multithreaded program (where you have more than one thread running), the GIL limits performance because it only allows one thread to run Python code at a time. So even if you have a multi-core processor, Python threads won't run in parallel on those cores. Instead, they take turns running, which can result in less efficient performance for CPU-heavy tasks.
+
+
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+13. What is the purpose of the @property decorator in Python?
+Answer =>
+
