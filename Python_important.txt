@@ -550,3 +550,188 @@ ________________________________________________________________________________
 13. What is the purpose of the @property decorator in Python?
 Answer =>
 
+
+The @property decorator in Python is a way to define a getter method that can be accessed like an attribute. In other words, it allows a method to be called without parentheses (like an attribute), but still perform some logic or computation behind the scenes.
+
+
+Example ->
+
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius  # Private attribute
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Radius cannot be negative!")
+        self._radius = value
+
+circle = Circle(5)
+print(circle.radius)  # Output: 5
+circle.radius = 10    # Updates radius to 10
+print(circle.radius)  # Output: 10
+circle.radius = -1    # Raises ValueError
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+
+14. How does Python handle exceptions? Explain how you can handle exceptions in Python.
+Answer =>
+
+
+So in python the exception handling is the process its protect our application from the runtime error.
+
+
+i give two senerio
+suppose if you are working on a project and during excution any error occurs in your program so you can fix this error easily
+but the second senerio suppose you have deployed you'r application and now some errror occurs in your application so it is posible error can crash your application
+so for this case we can use exception handling 
+
+where we define try , except and finally and else block
+
+in main functionality i know some error occures in future so i will defined the main logic inside the try block and if try block occurs any errror so my except block will excute>
+
+
+
+Example =>
+
+
+
+try:
+    # Main functionality that might raise an error
+    result = some_function()
+except SomeSpecificError:
+    # Handle the error if it occurs
+    print("An error occurred!")
+else:
+    # Runs if no error occurs
+    print("Operation successful!")
+finally:
+    # Always runs, no matter what
+    print("Cleanup tasks done.")
+
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+15. What is a metaclass in Python and how does it differ from regular classes?
+Answer =>
+
+Metaclass is a special type of a class in python. its control the process of creating class. Whenever you create a new class so python internally it is use metaclass for creting a class.
+
+
+Example =>
+
+# Apna ek metaclass banate hain
+class MyMeta(type):
+    def __new__(cls, name, bases, dct):
+        print(f"Class {name} create ki ja rahi hai.")
+        return super().__new__(cls, name, bases, dct)
+
+# Ab hum ek class banayenge jisme yeh metaclass use hoga
+class MyClass(metaclass=MyMeta):
+    pass
+
+# Jab yeh run hoga, output yeh hoga:
+# Class MyClass create ki ja rahi hai.
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+16. What is polymorphism in object-oriented programming, and how is it implemented in Python?
+Answer =>
+
+
+The polymorphism is a core concept of object oriented programming. polymorphism means "Many form"
+You can use the same function , operation and method in different ways depending on a objects or a data type.
+
+One technique example is like + operator because the + operator add two integer and the + operator also concetention
+of two string so the  name of operator perform different operation according to objects and data type.
+
+
+
+Example of polymorphism =>
+
+class Dog:
+    def speak(self):
+        return "Woof!"
+
+class Cat:
+    def speak(self):
+        return "Meow!"
+
+# Using the same method
+dog = Dog()
+cat = Cat()
+
+print(dog.speak())  # Output: Woof!
+print(cat.speak())  # Output: Meow!
+
+
+
+
+
+
+1. Method Overriding => Method overrinding is the process when a child class provides its own implementation of 
+                        a method that is already defined in the parent class.
+                        It is used in a inheritance.
+
+
+Example =>
+
+class Parent:
+    def greet(self):
+        print("Hello from Parent!")
+
+class Child(Parent):
+    def greet(self):  # Overriding the greet method
+        print("Hello from Child!")
+
+# Example of overriding
+obj = Child()
+obj.greet()  # Output: Hello from Child!
+
+
+
+How we can solve this problem =>
+___________________________________
+
+class A:
+    def getdata(self):
+        print("Parent class Info")
+        
+        
+class B(A):
+    def getdata(self):
+        # A.getdata(self)
+        # super().getdata()
+        print("Child class info")
+        
+        
+obj = B()
+obj.getdata()
+
+
+
+
+
+2 Method Overloading =>
+_______________________
+
+
+
+ 
