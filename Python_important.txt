@@ -729,9 +729,116 @@ obj.getdata()
 
 
 
-2 Method Overloading =>
+2 Method Overloading => Method Overloading is the process where we define multiple method with the same name but
+_______________________  different number of parameters or different type of parameters.
+
+In python method Overloading is not posible directly - so we can use a different way to implement method Overloading
+in python like using -
+
+1. Using variable length arguments
+Example =>
+
+class Calculator:
+    def add(self, *args):
+        return sum(args)
+
+# Example Usage
+calc = Calculator()
+print(calc.add(10))              # 10
+print(calc.add(10, 20))          # 30
+print(calc.add(10, 20, 30, 40))  # 100
+
+
+
+
+2. using multipledispatch
+Example =>
+
+from multipledispatch import dispatch
+
+# Define overloaded methods
+@dispatch(int, int)
+def add(a, b):
+    return a + b
+
+@dispatch(float, float)
+def add(a, b):
+    return a + b
+
+@dispatch(str, str)
+def add(a, b):
+    return a + " " + b
+
+# Example usage
+print(add(1, 2))           # 3 (integer addition)
+print(add(1.5, 2.5))       # 4.0 (float addition)
+print(add("Hello", "World"))  # "Hello World" (string concatenation)
+
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+17. How Python memory management works ?
+Answer =>
+
+Python memory management is a process like how Python handles memory for your program. When you create something like a variable, list, or dictionary, Python allocate memory automatically. and When you’re done using it, Python deallocate memory automatically.
+
+
+In python memory management python uses two tools - 
+1. Reference count
+2. Garbage collection
+
+
+
+1. Reference Counting => 
+
+Reference counting is a mechanism where every object in Python keeps track of the number of references pointing to it. When an object's reference count drops to zero, it means no part of the program is using that object, and Python automatically deallocates its memory.
+
+
+Example of Referece Counting =>
+
+a = [1, 2, 3]  # List object created; reference count = 1
+b = a           # Another reference to the same object; reference count = 2
+c = a           # Another reference; reference count = 3
+
+del b           # One reference removed; reference count = 2
+del c           # Another reference removed; reference count = 1
+del a           # Last reference removed; reference count = 0, object is deleted
+
+
+You can also check the reference counting =>
+
+import sys
+
+a = [10,20,30,40]
+
+print("The reference count of :- ",sys.getrefcount(a))
+
+b = a
+
+print("The reference count of :- ",sys.getrefcount(a))
+
+
+
+
+2. Garbage Colletion =>
+
+
+
+
+
+
+
+
+
+Why Is It Important?
 _______________________
+Good memory management ensures your program doesn’t crash or run out of memory.
+Python handles most of it automatically, so you don’t have to worry about it (unlike languages like C or C++ where you have to manually free memory).
 
-
+    
 
  
