@@ -794,12 +794,12 @@ In python memory management python uses two tools -
 
 
 1. Reference Counting => 
-
+-----------------------
 Reference counting is a mechanism where every object in Python keeps track of the number of references pointing to it. When an object's reference count drops to zero, it means no part of the program is using that object, and Python automatically deallocates its memory.
 
 
 Example of Referece Counting =>
-
+-----------------------------
 a = [1, 2, 3]  # List object created; reference count = 1
 b = a           # Another reference to the same object; reference count = 2
 c = a           # Another reference; reference count = 3
@@ -810,7 +810,7 @@ del a           # Last reference removed; reference count = 0, object is deleted
 
 
 You can also check the reference counting =>
-
+------------------------------------------
 import sys
 
 a = [10,20,30,40]
@@ -825,10 +825,33 @@ print("The reference count of :- ",sys.getrefcount(a))
 
 
 2. Garbage Colletion =>
+------------------------
+
+Garbage Collection (GC) in Python is a mechanism for automatically identifying and reclaiming memory occupied by objects that are no longer in use, especially in situations where reference counting fails, such as with circular references.
+
+
+Garbage Collection and Circular References:
+------------------------------------------
+Circular references occur when two or more objects reference each other, creating a cycle.
+
+Example:
+--------
+class Node:
+    def __init__(self, name):
+        self.name = name
+        self.ref = None
+
+a = Node("A")
+b = Node("B")
+a.ref = b  # a references b
+b.ref = a  # b references a
+del a
+del b
 
 
 
-
+In this case, even though a and b are deleted, they still reference each other, so their reference counts do not drop to zero.
+The garbage collector detects such cycles and removes them.
 
 
 
@@ -839,6 +862,936 @@ _______________________
 Good memory management ensures your program doesn’t crash or run out of memory.
 Python handles most of it automatically, so you don’t have to worry about it (unlike languages like C or C++ where you have to manually free memory).
 
+
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+18. What is the difference between append() and extend() methods in Python lists?
+
+So Both append() and extend() are used to add element in a list but they work differently -
+
+
+1. append:
+----------
+append adds one iteam to the end of the list.
+If you pass a list to append(), it will add the entire list as a single element, not its items.
+
+
+Example:
+-------
+my_list = [1, 2, 3]
+
+# Append a single item
+my_list.append(4)
+print(my_list)  # Output: [1, 2, 3, 4]
+
+# Append another list
+my_list.append([5, 6])
+print(my_list)  # Output: [1, 2, 3, 4, [5, 6]]
+
+
+
+
+
+2. extend():
+-------------
+Adds all the elements of an iterable (like a list or tuple) to the end of the list.
+It unpacks the items of the passed iterable and adds them individually.
+
+
+Example:
+--------
+
+my_list = [1, 2, 3]
+
+# Extend with another list
+my_list.extend([4, 5, 6])
+print(my_list)  # Output: [1, 2, 3, 4, 5, 6]
+
+# Extend with a tuple
+my_list.extend((7, 8))
+print(my_list)  # Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+
+19. What is class method and instance method ?
+
+
+
+Class Method:
+-------------
+
+A class method is a method that belongs to the class itself rather than a specific object (instance). It works with class-level data, which is shared among all objects of the class.
+
+1. It is defined using the @classmethod decorator.
+2. The first parameter is cls, which refers to the class.
+3. Class methods are useful when you want to perform actions related to the class as a whole, such as working 
+    with  class variables or creating alternative ways to construct objects.
+
+
+Example of Class Method:
+------------------------
+class Car:
+    manufacturer = "Toyota"  # Class-level data (shared by all cars)
+
+    @classmethod
+    def get_manufacturer(cls):
+        return cls.manufacturer
+
+# You can call a class method without creating an object
+print(Car.get_manufacturer())  # Output: Toyota
+
+
+get_manufacturer is a class method that retrieves the class attribute manufacturer.
+It doesn't depend on any specific car object.
+
     
 
  
+
+ What is an Instance Method?
+ ---------------------------
+An instance method is the most common type of method in a class. It works on specific objects (instances) of the class.
+
+1. It is defined without any special decorator.
+2. The first parameter is self, which refers to the specific object calling the method.
+3. Instance methods can access and modify the attributes and behavior of the object they are called on.
+
+
+Example of Instance Method:
+--------------------------
+
+class Car:
+    def __init__(self, model):
+        self.model = model  # Instance-level data (specific to an object)
+
+    def get_model(self):
+        return f"The car model is {self.model}"
+
+# Creating an instance of Car
+my_car = Car("Corolla")
+print(my_car.get_model())  # Output: The car model is Corolla
+
+
+get_model is an instance method that works with the attribute model specific to the my_car object.
+
+
+
+_____________________________________________________________________________________________________________________
+
+20. Dynamic Counting in Python?
+
+dynamic counting in Python refers to the process of tracking or updating counts dynamically (on the fly) as your program runs. It involves using variables, data structures like dictionaries, or built-in tools to count occurrences, events, or other elements during runtime.
+
+Example:
+---------
+
+Imagine you are processing a list of words and want to count how many times each word appears dynamically as you read the list.
+
+
+
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+count = {}
+
+for word in words:
+    count[word] = count.get(word, 0) + 1
+
+print(count)  # Output: {'apple': 3, 'banana': 2, 'orange': 1}
+
+
+
+
+Example with collections.Counter
+--------------------------------
+A more Pythonic way to do dynamic counting is by using collections.Counter.
+
+
+from collections import Counter
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+count = Counter(words)
+print(count)  # Output: Counter({'apple': 3, 'banana': 2, 'orange': 1})
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+
+21. What is the difference between yield and return in Python?
+
+return:
+------
+return is a statement in Python that exits the function and sends a single value (or multiple values in a tuple) back to the caller. Once the return statement is executed, the function stops running immediately.
+
+Work:
+-----
+It provides the final result of a function's execution.
+After returning the value, the function cannot be resumed.
+
+Example of return:
+-----------------
+def multiply(a, b):
+    return a * b  # Sends the result back and stops the function
+
+result = multiply(4, 5)
+print(result)  # Output: 20
+
+
+
+
+
+yield:
+------
+yield is a statement in Python that pauses the function and produces a value for the caller, but unlike return, it does not terminate the function. The function can be resumed later to continue execution from where it paused.
+
+Work:
+-----
+It is used to create generators, which are special iterators that generate values one at a time.
+When yield is used, the function becomes a generator function and returns an iterator.
+
+Example of yield:
+-----------------
+def count_up_to(n):
+    for i in range(1, n + 1):
+        yield i  # Pauses after yielding each value
+
+gen = count_up_to(3)
+print(next(gen))  # Output: 1
+print(next(gen))  # Output: 2
+print(next(gen))  # Output: 3
+
+
+
+
+Comparison of return and yield:
+-------------------------------
+
+Feature	                                return	                                yield
+
+Purpose	                Returns a single result to the caller.	Produces a sequence of results over time.
+
+Stops or Pauses	                 Stops the function entirely.	Pauses the function and remembers its state.
+
+Use Case	         When a final output is needed.	                When you need to generate data lazily 
+                                                                        or handle large datasets.
+
+Creates	                    A value or a list of values.	A generator object (an iterable).
+
+
+
+
+____________________________________________________________________________________________________________________
+
+22. What is the difference between an iterator and an iterable in Python?
+
+
+1. Iterable:
+------------
+An iterable is any object in Python that can be looped through (like a list, string, or tuple). It’s like a collection of items.
+
+Examples of iterables:
+--------------------
+Lists: [1, 2, 3]
+Strings: "hello"
+Tuples: (4, 5, 6)
+
+Sets, dictionaries, and more.
+To make something iterable, it must have the special method __iter__(), which allows Python to start looping through it.
+
+
+Example:
+----------
+my_list = [1, 2, 3]
+for item in my_list:
+    print(item)  # Output: 1, 2, 3
+
+
+
+
+
+
+
+2. Iterator:
+-------------
+An iterator is an object that helps you go through an iterable one item at a time. It remembers where it left off, so you can fetch the next item with the next() function.
+
+To be an iterator, the object must have:
+
+__iter__() - to make it iterable.
+__next__() - to fetch the next item.
+
+
+Example:
+--------
+
+my_list = [1, 2, 3]
+iterator = iter(my_list)  # Convert the list into an iterator.
+
+print(next(iterator))  # Output: 1
+print(next(iterator))  # Output: 2
+print(next(iterator))  # Output: 3
+
+Here, the iterator fetches one item at a time. Once it runs out of items, calling next() will raise a StopIteration error.
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+23. Difference between list , tuple and array
+
+1. Defination:
+--------------
+Array:- A collection of elements of the same data type stored in a contiguous memory block.	
+List :- A flexible collection of elements of any data type that can grow or shrink dynamically.	
+Tuple :- An immutable collection of elements of any data type that cannot be changed after creation.
+
+
+
+2. Mutability:
+---------------
+Array :-  Mutable (you can modify, add, or remove elements).	
+List :- Mutable (you can modify, add, or remove elements).	
+Tuple :- Immutable (once created, elements cannot be modified).
+
+
+3. Size Modification:
+---------------------
+Array :- Can grow or shrink dynamically.	
+List :- Can grow or shrink dynamically.	
+Tuple :- Fixed size after creation (cannot add or remove elements).
+
+
+4. Performance:
+---------------
+Array :- Faster for numerical computations because of fixed data types.	
+List :- Slightly slower for numerical tasks but flexible for general usage.	
+Tuple :- More memory-efficient and faster to access due to immutability.
+
+
+
+5. Memory Usage	:
+-----------------
+Array :- Efficient for large datasets of the same type.	
+List:- Requires more memory for mixed-type storage.	
+Tuple :- Most memory-efficient because of immutability.
+
+
+6. Library Dependency:-
+------------------------
+Array :- Requires the array module or external libraries like NumPy for advanced operations.	
+List :- Built-in Python data structure (no additional library required).	
+Tuple :- Built-in Python data structure (no additional library required).
+
+
+7. Use Case	:
+-------------
+Array :- Used for mathematical computations and large datasets where all items are of the same type.	
+List :- Used for flexible data storage with mixed or dynamic content.	
+Tuple :- Used for fixed, read-only data to ensure values do not accidentally change.
+
+
+8. Creation Syntax:
+-------------------
+Array :- array('i', [1, 2, 3]) (for integers).	
+List :- [1, 2, "hello", 4.5].	
+Tuple :- (1, 2, "hello", 4.5).
+
+
+
+____________________________________________________________________________________________________________________
+
+
+24. What is pep8?
+
+Yes, PEP 8 is a style guide for Python code that provides conventions for writing clean, readable, and consistent Python code. It is the official style guide for Python, and following its guidelines ensures that Python code is easy to read and maintain, both for individuals and teams.
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+
+25. what is __init__ ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+
+26. What is closure in python ?
+
+
+In simple words, a closure in Python is a function inside another function that remembers and can use variables from its outer function, even after the outer function has finished running.
+
+Here's an easy way to think about it:
+
+Imagine you have a box (the outer function) that contains something (a variable).
+Inside that box, there's a smaller box (the inner function) that can look inside the bigger box and use what's in it.
+Even after you close the bigger box (outer function), the smaller box (inner function) can still remember what was inside the bigger box and use it whenever you need it.
+
+
+
+
+Example:
+--------
+
+def outer_function(outer_variable):
+    def inner_function(inner_variable):
+        return outer_variable + inner_variable
+    return inner_function
+
+# Create a closure
+my_closure = outer_function(10)
+
+# Call the closure with a new value
+print(my_closure(5))  # Output: 15
+
+
+
+
+
+In short, a closure allows an inner function to remember and use variables from its outer function even after the outer function has finished.
+
+
+____________________________________________________________________________________________________________________
+
+
+27. What is the interface in oops ?
+
+
+In Object-Oriented Programming (OOP), an interface is a blueprint for a class. It defines a set of methods (but not their implementation) that a class must implement. An interface provides a way to enforce certain behaviors on the classes that implement it, ensuring consistency across different classes without dictating how the methods are executed.
+
+
+Python doesn’t have built-in support for interfaces like Java or C#. Instead, Python uses abstract base classes (ABCs) to achieve similar functionality. You can create an interface in Python by using the abc module.
+
+
+Example of an Interface in Python:
+----------------------------------
+from abc import ABC, abstractmethod
+
+# Define an interface using an abstract base class
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass  # This method must be implemented by any subclass
+
+    @abstractmethod
+    def move(self):
+        pass  # This method must also be implemented
+
+# Implementing the interface
+class Dog(Animal):
+    def speak(self):
+        return "Bark"
+
+    def move(self):
+        return "Runs"
+
+class Bird(Animal):
+    def speak(self):
+        return "Chirp"
+
+    def move(self):
+        return "Flies"
+
+# Using the classes
+dog = Dog()
+bird = Bird()
+
+print(dog.speak())  # Output: Bark
+print(bird.move())  # Output: Flies
+
+____________________________________________________________________________________________________________________
+
+28. What is a context manager in Python, and how is it used?
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+29. How do you create a custom context manager in Python?
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+30. What is the hashing technique in Python?
+
+The hashing technique in Python is a method of converting data (like strings, numbers, or objects) into a fixed-size integer value, called a hash value or hash code. Hashing is primarily used in data structures like hash tables and sets for fast data access, and for verifying data integrity in cryptographic operations.
+
+Key Points About Hashing:
+-------------------------
+
+Hash Function:
+-------------
+A hash function takes an input (data) and returns a fixed-size hash value.
+In Python, the hash() function generates the hash value of an object.
+
+Purpose:
+-------
+Efficiently store and retrieve data in hash-based data structures like dictionaries and sets.
+Ensure data integrity (e.g., in cryptographic applications).
+
+Deterministic:
+-------------
+For the same input, a hash function always produces the same output during a single program execution.
+
+Immutability:
+-------------
+Only immutable objects (like strings, numbers, and tuples) can be hashed in Python.
+
+
+
+
+Built-In Hashing in Python:
+---------------------------
+Python provides a built-in hash() function to compute hash values for hashable objects.
+
+Example:
+--------
+# Using hash() function
+value = "hello"
+hash_value = hash(value)
+print(hash_value)  # Output: An integer (hash value)
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+31. How can you determine which task has completed in a multithreaded environment?
+
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+32. what is class method , static method , and instance method?
+
+
+1. Instance Method:
+-------------------
+
+Definition: A method that belongs to an object (instance) and can use or change the object’s data.
+
+How to identify: It always has self as the first parameter.
+
+Example:
+---------
+class Dog:
+    def __init__(self, name):  # This runs when we create an object
+        self.name = name  # Store the name of the dog
+
+    def greet(self):  # Instance method
+        return f"Hello, my name is {self.name}"  # Uses object data
+
+dog = Dog("Buddy")  # Create an object
+print(dog.greet())  # Output: Hello, my name is Buddy
+
+
+
+
+
+2. Class Method:
+---------------
+
+Definition: A method that belongs to the class, not any specific object. It works on the class itself and uses cls as the first parameter.
+
+How to identify: Decorated with @classmethod.
+
+
+Example:
+---------
+class Dog:
+    species = "Canine"  # Shared by all dogs (class data)
+
+    @classmethod
+    def show_species(cls):  # Class method
+        return f"All dogs are {cls.species}"
+
+print(Dog.show_species())  # Output: All dogs are Canine
+
+
+3. Static Method:
+----------------
+
+Definition: A method that doesn’t use self (object) or cls (class). It’s just a regular function that happens to be inside the class.
+
+How to identify: Decorated with @staticmethod.
+
+Example:
+-------
+class Dog:
+    @staticmethod
+    def info():  # Static method
+        return "Dogs are loyal animals."
+
+print(Dog.info())  # Output: Dogs are loyal animals.
+
+
+____________________________________________________________________________________________________________________
+
+34.  What is the difference between synchronous and asynchronous programming languages?
+
+
+
+Synchronous Programming:
+------------------------
+In synchronous programming, tasks are executed one after another. The program waits for the current task to finish before starting the next one.
+
+If one task takes a long time (e.g., downloading a file), everything else has to wait.
+
+Example:
+-------
+def task1():
+    print("Task 1 started")
+    print("Task 1 completed")
+
+def task2():
+    print("Task 2 started")
+    print("Task 2 completed")
+
+task1()
+task2()
+
+
+
+
+
+Asynchronous Programming:
+-------------------------
+
+In asynchronous programming, tasks can run independently. The program doesn’t wait for one task to finish; it starts other tasks while waiting for the result of the first one.
+
+Allows other tasks to continue running instead of waiting, making it faster for some scenarios (like network requests).
+
+
+Example:
+--------
+
+import asyncio
+
+async def task1():
+    print("Task 1 started")
+    await asyncio.sleep(2)  # Simulates waiting (e.g., for a file download)
+    print("Task 1 completed")
+
+async def task2():
+    print("Task 2 started")
+    await asyncio.sleep(1)
+    print("Task 2 completed")
+
+async def main():
+    await asyncio.gather(task1(), task2())  # Run tasks concurrently
+
+asyncio.run(main())
+
+
+
+Output:
+--------
+Task 1 started  
+Task 2 started  
+Task 2 completed  
+Task 1 completed  
+
+
+
+Notice how Task 2 completes while Task 1 is still running.
+
+
+
+
+
+
+Main Differences:
+-----------------
+
+Feature	                            Synchronous	                                    Asynchronous
+
+Execution Order	                Tasks run one after another.	            Tasks can run concurrently.
+
+Waiting	                        Program waits for each task.	        Other tasks continue while waiting.
+
+Speed	                        Slower for tasks needing waits.	        Faster in scenarios like I/O operations.
+
+Example Scenario            	Reading files line-by-line.	                Handling multiple API requests.
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+36. What is the heap memory and stack memory?
+
+
+
+1. What is Stack Memory?
+------------------------
+1. Stack memory is used for temporary storage of data, like variables inside a function.
+2. When a function runs, it uses stack memory to keep track of its variables.
+3. Once the function is done, the stack clears that memory automatically.
+
+
+Example:
+--------
+def add_numbers(a, b):
+    result = a + b  # `a`, `b`, and `result` are in stack memory
+    return result
+
+add_numbers(3, 4)  # Stack memory is cleared when this function finishes
+
+
+
+
+2. What is Heap Memory?
+-------------------------
+1. Heap memory is used to store big data or things that need to last longer, like objects, lists, or dictionaries.
+2. Unlike stack memory, heap memory doesn’t clear automatically — Python’s garbage collector manages it.
+3. It’s slower than stack memory but much bigger in size.
+
+Example:
+--------
+data = [1, 2, 3, 4]  # This list is stored in heap memory
+print(data)
+
+
+
+
+
+
+Feature	                               Stack Memory	                                Heap Memory
+--------                               ------------                                ------------
+What it stores	          Temporary data like variables in functions.	 Long-lasting data like objects and lists.
+
+Speed	                            Very fast to access.	                    Slower to access.
+
+Size	                            Small and limited.	                    Large and can grow as needed.
+
+Management	                Cleared automatically after function ends.	Managed by Python’s garbage collector.
+
+Analogy	                            Like a stack of plates.	                    Like a big storage room.
+
+
+____________________________________________________________________________________________________________________
+
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
+38. Difference between cls and self in class and instance methods?
+
+
+What is self:
+--------------
+
+self refers to the current instance of the class.
+It is used in instance methods to access or modify the properties (attributes) and methods of that specific object.
+
+Example:
+--------
+class Dog:
+    def __init__(self, name):  # Instance method
+        self.name = name  # `self.name` refers to the current instance's name
+    
+    def bark(self):
+        print(f"{self.name} says Woof!")  # `self.name` accesses the instance's name
+
+dog1 = Dog("Buddy")
+dog1.bark()  # Output: Buddy says Woof!
+
+
+
+
+What is cls:
+------------
+cls refers to the class itself, not any specific instance.
+It is used in class methods to access or modify the properties (attributes) of the entire class, like shared variables or class-level attributes.
+
+
+Example:
+--------
+class Dog:
+    species = "Canine"  # Class-level attribute shared by all instances
+    
+    @classmethod
+    def set_species(cls, new_species):  # Class method
+        cls.species = new_species  # `cls.species` modifies the class-level attribute
+
+print(Dog.species)  # Output: Canine
+Dog.set_species("Wolf")  # Change species for the entire class
+print(Dog.species)  # Output: Wolf
+
+
+____________________________________________________________________________________________________________________
+
+39. Method Resolution Order (MRO)?
+
+MRO (Method Resolution Order) is the order in which Python looks for a method or attribute in a class and its parent classes when you call it. It’s like a roadmap that tells Python where to search first, second, and so on.
+
+
+1. MRO in Single Inheritance:
+-----------------------------
+If a class has only one parent, Python will:
+
+1. Check the method in the current class.
+2. If not found, check the parent class.
+3. Finally, check the base class object (all classes in Python inherit from this).
+
+
+Example:
+--------
+class Parent:
+    def show(self):
+        print("This is Parent")
+
+class Child(Parent):
+    pass
+
+obj = Child()
+obj.show()  # Output: This is Parent
+
+Here, Child doesn’t have a show() method, so Python looks in Parent.
+
+
+
+
+
+
+Example 2: Multiple Inheritance:
+-------------------------------
+class A:
+    def show(self):
+        print("Class A")
+
+class B:
+    def show(self):
+        print("Class B")
+
+class C(A, B):
+    pass
+
+obj = C()
+obj.show()
+# Output: Class A
+
+
+How MRO Works Here:
+
+Python first checks C.
+Then it checks A (leftmost parent).
+Finally, it checks B.
+
+
+
+
+
+
+
+
+
+Example 3: Diamond Problem:
+----------------------------
+The diamond problem occurs in multiple inheritance when a class inherits from two classes, which both inherit from a common base class.
+
+
+class A:
+    def show(self):
+        print("Class A")
+
+class B(A):
+    def show(self):
+        print("Class B")
+
+class C(A):
+    pass
+
+class D(B, C):  # D inherits from B and C
+    pass
+
+obj = D()
+obj.show()
+
+# Output: Class B
+
+
+
+How MRO Solves This:
+
+Python uses MRO to ensure each class is visited only once.
+MRO for D is: D → B → C → A → object.
+
+
+
+
+
+How to Check MRO:
+-----------------
+You can view the MRO of any class using:
+
+The mro() method:
+----------------
+print(D.mro())
+# Output: [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+
+The help() function:
+--------------------
+help(D)
+
+
+
+
+
+____________________________________________________________________________________________________________________
+
