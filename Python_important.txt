@@ -13,7 +13,7 @@ Answer -->
 
 
 
-_____________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________
 
 
 2. Data types in Python.
@@ -33,7 +33,7 @@ Answer -->
 
 
 
-_____________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________
 
 
 
@@ -218,63 +218,63 @@ ________
 
 
 
-_____________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________
 
-7. Multithreading and multiprocessing in Python.
+7. Multithreading  in Python.
 Answer -->
 _______
 
-    Multithreading -->
-    ______________
+Multithreading -->
+______________
 
-    Multithreading is a technique where a program can perform multiple tasks At the same time by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
+Multithreading is a technique where a program can perform multiple tasks At the same time by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
 
-    In Python , we can use threding module to implements multithreading
-
-
-    Why Use Multithreading?
-    _______________________
-    
-    1. Concurrency: 
-        Allows multiple tasks to run at the same time, improving the responsiveness of applications.
-        Example: Handling user input while performing background computations.
-
-    2. Efficient I/O Operations: 
-        Useful for tasks like file reading, database queries, or network requests where threads can perform other operations while waiting for I/O to complete.
+In Python , we can use threding module to implements multithreading
 
 
-    Basic Multithreading Example -
-    _____________________________
-    import threading
-    import time
+Why Use Multithreading?
+_______________________
 
-    def print_numbers():
-        for i in range(5):
-            print(f"Thread 1: {i}")
-            time.sleep(1)
+1. Concurrency: 
+    Allows multiple tasks to run at the same time, improving the responsiveness of applications.
+    Example: Handling user input while performing background computations.
 
-    def print_letters():
-        for ch in 'abcde':
-            print(f"Thread 2: {ch}")
-            time.sleep(1)
-
-    # Create threads
-    thread1 = threading.Thread(target=print_numbers)
-    thread2 = threading.Thread(target=print_letters)
-
-    # Start threads
-    thread1.start()
-    thread2.start()
-
-    # Wait for threads to complete
-    thread1.join()
-    thread2.join()
-
-    print("All threads have completed.")
+2. Efficient I/O Operations: 
+    Useful for tasks like file reading, database queries, or network requests where threads can perform other operations while waiting for I/O to complete.
 
 
+Basic Multithreading Example -
+_____________________________
+import threading
+import time
 
-_____________________________________________________________________________________________________________________
+def print_numbers():
+    for i in range(5):
+        print(f"Thread 1: {i}")
+        time.sleep(1)
+
+def print_letters():
+    for ch in 'abcde':
+        print(f"Thread 2: {ch}")
+        time.sleep(1)
+
+# Create threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for threads to complete
+thread1.join()
+thread2.join()
+
+print("All threadsj have completed.")
+
+
+
+____________________________________________________________________________________________________________________
 
 
 
