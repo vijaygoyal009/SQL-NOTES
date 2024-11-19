@@ -1183,7 +1183,7 @@ Tuple :- More memory-efficient and faster to access due to immutability.
 
 
 
-5. Memory Usage	:
+5. Memory Usage:
 -----------------
 Array :- Efficient for large datasets of the same type.	
 List:- Requires more memory for mixed-type storage.	
