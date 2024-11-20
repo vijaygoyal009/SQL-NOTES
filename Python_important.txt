@@ -1,35 +1,527 @@
-1. Features of Python.
+What is Python ?
+Python is a high-level, general-purpose, interpreted, and dynamic programming language. It was created by Guido van Rossum in 1989 and the first version of python released in 20 fab  1991.
 
-Answer --> 
-    1. Easy to Learn and Use
-    2. Open-Source and Free
-    3. Interpreted Language
-    4. Cross-Platform
-    5. Object-Oriented and Procedural
-    6. Large Standard Library
-    7. Dynamically Typed
-    8. High-Level Language
-    9. Integration Friendly
+
+______________________________________________________________________
 
 
 
-____________________________________________________________________________________________________________________
+What is a Comment?
+A comment in Python is a piece of text in the code that is ignored by the Python interpreter during execution. Comments are used to document the code, explain its logic, or leave notes for developers, making the code easier to understand and maintain. We can create a comment using a # symbol.
+
+______________________________________________________________________
 
 
-2. Data types in Python.
-Answer -->
-    Data type is a classification of like which type of value variable can hold.
-    In python there are various type of data type available
+
+What is Variable? And variable defining rules?
+A variable is like a container that stores data values. if you want to remember someone’s age, you can create a variable called age, and inside this variable, you can store the value of the person’s age.
+
+Here are the rules for defining variables in Python:
+Variable names must start with a letter or an underscore (_).
+The rest of the name can contain letters, numbers, or underscores.
+Variable names are case-sensitive.
+Avoid using Python keywords or reserved words.
+Variable names should be meaningful and descriptive.
+Do not use special characters (e.g., $, &) in variable names.
+No spaces allowed in variable names; use underscores instead.
+Variable names cannot start with numbers.
+Variable names should be concise but clear (avoid too long or too short names).
+	______________________________________________________________________
+
+
+    4. What is Data type in python?
+    A data type in Python is a classification that specifies which type of value a variable can hold.
+   
+   There are various type of  data type available in python -
+   (int,float,bool,list , dict , tuple , range  , set , frozenset , complex)
+    __________________________________________________________________________
+5.  What is type casting?
+Type casting is the process of converting one data type into another. In Python, this can be done explicitly using type conversion functions.
+
+Types of Type Casting:
+Implicit Type Casting (Automatic Casting) -
+This happens automatically when Python converts a smaller data type into a larger one. For example, when an integer is assigned to a variable that expects a float, Python automatically converts the integer to a float.
+
+Example -
+x = 5    # int
+y = 2.5  # float
+result = x + y  # Python automatically converts 'x' to float
+print(result)   # Output: 7.5
+
+Explicit Type Casting (Manual Casting):
+This is when you manually convert one data type into another using functions like int(), float(), str(), etc.
+
+Common Type Casting Functions:
+int(): Converts to an integer.
+float(): Converts to a float.
+str(): Converts to a string.
+list(): Converts to a list.
+tuple(): Converts to a tuple.
+set(): Converts to a set.
+
+___________________________________________________________________________
+6. What is String?
+A string is a collection of characters. In Python, strings are defined using single quotes (' ') or double quotes (" "). A string can contain numbers, alphabets, and special characters. Strings in Python are immutable, meaning that once a string is created, its content cannot be changed or modified. 
+We can perform some basic operation on a string but we can not change the original string we can create a new string based on the origina.
+
+String Concatenation: You can join two or more strings using the + operator.
+greeting = "Hello"
+name = "Alice"
+message = greeting + " " + name  # Concatenate strings
+print(message)  # Output: Hello Alice
+
+String Repetition: You can repeat a string using the * operator.
+text = "Hi! "
+print(text * 3)  # Output: Hi! Hi! Hi!
+
+Accessing Characters (Indexing): Strings are indexed, meaning each character in the string has a position starting from 0.
+word = "Python"
+print(word[0])  # Output: P (first character)
+print(word[3])  # Output: h (fourth character)
+
+Slicing: You can extract a part (substring) of a string using slicing.
+text = "Hello, World!"
+print(text[0:5])  # Output: Hello (from index 0 to 4)
+print(text[7:12])  # Output: World (from index 7 to 11)
+
+String Length: Use len() to get the length of a string (number of characters).
+message = "Python"
+print(len(message))  # Output: 6
+
+String Formatting:
+You can insert values into a string using string formatting methods like f-strings, format(), or old-style % formatting.
+f-strings (Python 3.6+):
+
+name = "Alice"
+age = 25
+print(f"Name: {name}, Age: {age}")
+
+
+format() method:
+template = "Name: {}, Age: {}"
+print(template.format(name, age))
+
+
+String Methods -
+lower() – Converts all characters to lowercase.
+upper() – Converts all characters to uppercase.
+capitalize() – Capitalizes the first letter and makes the rest lowercase.
+title() – Capitalizes the first letter of each word.
+strip() – Removes leading and trailing whitespaces.
+lstrip() – Removes leading (left) whitespaces.
+rstrip() – Removes trailing (right) whitespaces.
+replace(old, new) – Replaces occurrences of old with new in the string.
+find(sub) – Returns the index of the first occurrence of sub or -1 if not found.
+count(sub) – Returns the number of occurrences of sub in the string.
+split(delimiter) – Splits the string into a list of substrings using the delimiter.
+join(iterable) – Joins elements of an iterable (like a list) into a single string, using the string as a separator.
+isdigit() – Returns True if all characters are digits.
+isalpha() – Returns True if all characters are alphabetic.
+isspace() – Returns True if all characters are whitespace.
+isnumeric() – Returns True if all characters are numeric.
+isupper() – Returns True if all characters are uppercase.
+islower() – Returns True if all characters are lowercase.
+startswith(prefix) – Returns True if the string starts with the specified prefix.
+endswith(suffix) – Returns True if the string ends with the specified suffix.
+format(*args, **kwargs) – Used for string formatting by replacing placeholders with values.
+zfill(width) – Pads the string with zeros on the left until it reaches the specified width.
+partition(separator) – Splits the string into three parts based on the separator: before, separator, and after.
+rfind(sub) – Returns the highest index of sub in the string or -1 if not found.
+removeprefix(prefix) – Removes the specified prefix from the string (Python 3.9+).
+removesuffix(suffix) – Removes the specified suffix from the string (Python 3.9+).
+
+____________________________________________________________________________
+
+
+
+
+7. What is the difference between Python2 and Pyhon3?
+1. Print Statement
+Python 2: print is a statement, so no parentheses are needed.
+print "Hello"
+
+Python 3: print() is a function, so parentheses are required.
+print("Hello")
+
+
+2.Division Behavior
+Python 2: Division between two integers returns an integer (floor division).
+5 / 2  # Output: 2
+Python 3: Division between two integers returns a float.
+python
+5 / 2  # Output: 2.5
+
+
+4. xrange() vs range()
+Python 2: range() returns a list, and xrange() returns an iterator for memory efficiency.
+Python 3: range() behaves like xrange() in Python 2 (returns an iterator), and xrange() is removed.
+5. Input Handling
+Python 2: input() evaluates the input as Python code, and raw_input() is used for reading strings.
+Python 3: input() always returns a string, and raw_input() is removed.
+6. Error Handling Syntax
+Python 2: except Exception, e:
+Python 3: except Exception as e:
+
+____________________________________________________________________________
+
+
+
+
+
+
+
+8. What is Operator in python? And how many types of operators support python?
+An operator is a special symbol or keyword in Python that is used to perform specific operations on values (called operands) or variables.
+
+1. Arithmetic Operators
+These operators are used to perform basic arithmetic operations.
+Operator
+Description
+Example
++
+Addition
+3 + 5 = 8
+-
+Subtraction
+10 - 4 = 6
+*
+Multiplication
+2 * 6 = 12
+/
+Division
+8 / 4 = 2.0
+//
+Floor Division
+9 // 4 = 2
+%
+Modulus (Remainder)
+9 % 4 = 1
+**
+Exponentiation (Power)
+2 ** 3 = 8
+
+
+
+2. Comparison (Relational) Operators
+These operators compare two values and return a Boolean value (True or False).
+Operator
+Description
+Example
+==
+Equal to
+3 == 3 (True)
+!=
+Not equal to
+3 != 4 (True)
+>
+Greater than
+5 > 2 (True)
+<
+Less than
+3 < 5 (True)
+>=
+Greater than or equal to
+4 >= 4 (True)
+<=
+Less than or equal to
+2 <= 5 (True)
+
+3. Logical Operators
+These operators are used to combine conditional statements.
+Operator
+Description
+Example
+and
+Returns True if both conditions are true
+True and False (False)
+or
+Returns True if at least one condition is true
+True or False (True)
+not
+Reverses the Boolean value
+not True (False)
+
+
+
+
+
+4. Assignment Operators
+These operators assign a value to a variable.
+Operator
+Description
+Example
+=
+Assign value to variable
+x = 5
++=
+Add and assign
+x += 3 (equivalent to x = x + 3)
+-=
+Subtract and assign
+x -= 2 (equivalent to x = x - 2)
+*=
+Multiply and assign
+x *= 4 (equivalent to x = x * 4)
+/=
+Divide and assign
+x /= 2 (equivalent to x = x / 2)
+//=
+Floor divide and assign
+x //= 2 (equivalent to x = x // 2)
+%=
+Modulus and assign
+x %= 3 (equivalent to x = x % 3)
+**=
+Exponentiate and assign
+x **= 2 (equivalent to x = x ** 2)
+
  
 
-    Numeric	            int, float, complex	            10, 3.14, 2+3j
-    Text	            str	                            "Python"
-    Sequence	        list, tuple, range	            [1, 2, 3], (4, 5), range(5)
-    Set	                set, frozenset	                {1, 2, 3}, frozenset([4, 5])
-    Mapping	            dict	                        {"key": "value"}
-    Boolean	            bool	                        True, False
-    Binary	            bytes, bytearray, memoryview	b"data", bytearray(5)
-    None	            NoneType                       	None
+
+
+
+
+
+5. Identity Operators
+These operators compare the memory location of two objects.
+Operator
+Description
+Example
+is
+Returns True if both variables point to the same object
+a is b
+is not
+Returns True if both variables point to different objects
+a is not b
+
+6. Membership Operators
+These operators test whether a value is found in a sequence (e.g., list, tuple, string).
+Operator
+Description
+Example
+in
+Returns True if value exists in sequence
+'a' in 'apple' (True)
+not in
+Returns True if value does not exist in sequence
+'b' not in 'apple' (True)
+
+
+
+
+
+
+7. Bitwise Operators
+These operators perform bit-level operations on binary numbers.
+Operator
+Description
+Example
+&
+Bitwise AND
+5 & 3 (1)
+`
+`
+Bitwise OR
+^
+Bitwise XOR
+5 ^ 3 (6)
+~
+Bitwise NOT
+~5 (-6)
+<<
+Bitwise left shift
+5 << 1 (10)
+>>
+Bitwise right shift
+5 >> 1 (2)
+
+_______________________________________________________________________________________________________________________________________________________
+
+
+9. What is PEP8 and why it is important ?
+PEP 8 stands for Python Enhancement Proposal 8, which is a set of guidelines that suggest how to write Python code in a clean, readable, and consistent way. It covers everything from naming conventions to how to use spaces, indentation, and comments.
+
+____________________________________________________________________________________________________________________
+
+
+10. What is the concept of variable scoping ?
+Scope is the region or area in the program where a variable is defined and determines where that variable can be accessed or modified.
+
+Python follows a specific set of rules to look up and assign values to variables depending on where they are declared. This is  established by the LEGB rule
+
+1. Local Scope ->A variable is in the local scope if it is defined inside a function. It can only be accessed within that function.
+    Example -> 
+        def greet():
+        message = "Hello, World!"  # Local variable
+        print(message)
+        greet()
+        # print(message)  # Error! message is local to greet() function
+
+2. Global Scope
+A variable is in the global scope if it is defined outside of any function. It can be accessed both inside and outside functions.
+
+Example ->
+            x = 10  # Global variable
+            def print_x():
+                print(x)  # Accessing the global variable 'x'
+            print_x()  # Prints 10
+            print(x)   # Also prints 10 outside the function
+
+
+3.Enclosing Scope (Nested Functions)
+A variable in an enclosing scope refers to a variable that is defined in an outer (enclosing) function and can be accessed by an inner (nested) function.
+
+
+Example ->
+            def outer_function():
+                outer_var = "I'm in the outer function"  # Variable in outer function 
+                def inner_function():
+                    print(outer_var)  # Accessing variable from outer function
+                inner_function()
+            outer_function()
+
+
+
+4. Built-in Scope
+Python provides a set of built-in functions and objects, like print(), len(), etc., which are always accessible and available globally.
+Example ->
+print(len("Hello"))
+
+
+
+
+____________________________________________________________________________________________________________________
+
+11. What is Module and Package ?
+
+Module - A module is a single file containing Python code (functions, classes, or variables) that can be 
+_______  imported and reused in other Python programs. It helps organize code and promotes reusability.
+
+Example of module -
+___________________
+If you create a file named math_utils.py:
+
+# math_utils.py
+def add(a, b):
+    return a + b
+
+
+You can use this file (module) in another program:
+
+import math_utils
+result = math_utils.add(3, 4)
+print(result)  # Output: 7
+
+
+
+
+
+Package - A package is a collection of modules. A package also contains a special file called __init__.py. 
+          In Python, any directory that includes an __init__.py file is considered a package.
+
+
+Example of Package -
+_____________________
+Example:
+A package named utilities might look like this:
+
+utilities/
+    __init__.py
+    math_utils.py
+    string_utils.py
+
+
+
+You can use the modules inside the package like this:
+
+from utilities import math_utils
+
+result = math_utils.add(2, 3)
+print(result)  # Output: 5
+
+
+
+____________________________________________________________________________________________________________________
+
+
+12. What is the difference between global variable and local variable ?
+
+Global Variable
+----------------
+A global variable is a variable that is declared outside of all functions. It is accessible throughout the entire program, including inside functions (unless shadowed by a local variable).
+
+
+Example:
+--------
+x = 10  # Global variable
+
+def show():
+    print(x)  # Accessible inside the function
+
+show()
+print(x)  # Accessible outside the function
+
+
+
+
+Local Variable
+---------------
+A local variable is a variable that is declared inside a function. It is accessible only within that function and is not available outside of it.
+
+
+Example:
+---------
+def show():
+    y = 5  # Local variable
+    print(y)
+
+show()
+# print(y)  # Error! y is not accessible outside the function
+
+
+
+
+
+Differences Between Global and Local Variables?
+
+Aspect	                            Global Variable	                            Local Variable
+
+Scope	                Accessible throughout the program.	Accessible only within the function it is defined in.
+
+Declaration         	Declared outside all functions or blocks.	Declared inside a function or block.
+
+Lifetime	        Exists for the entire runtime of the program.	Exists only during the function’s execution.
+
+Modification	            Can be modified using the global 	Cannot be modified outside the function.
+                            keyword inside a function.
+
+Example	x = 10 outside all functions.	y = 5 inside a specific function.
+
+
+
+____________________________________________________________________________________________________________________
+
+
+13. What is the Self ?
+
+In Python, a class contains instance variables and methods. When we define an instance method for a class, we use self as the first parameter. Using self, we can access both the instance variables and instance methods of the class. The self argument refers to the current object (or instance) of the class, allowing us to interact with its attributes and methods.
+
+
+Example =>
+
+class Dog:
+    def __init__(self, name, age):  # Constructor method
+        self.name = name  # Instance variable
+        self.age = age    # Instance variable
+    
+    def bark(self):  # Method
+        print(f"{self.name} says woof!")
+
+# Creating an instance of Dog
+dog1 = Dog("Buddy", 3)
+
+# Calling the method
+dog1.bark()  # Output: Buddy says woof!
 
 
 
@@ -37,102 +529,660 @@ ________________________________________________________________________________
 
 
 
-3. Set and Frozenset in Python ?
-Answer -->
+14. What is Constructor?
 
-    1. What is a Set?
-
-        A set is a collection of unique and unordered elements in Python.
-
-        Key Points:
-        Mutable: You can add or remove elements.
-        No Duplicates: Automatically removes duplicate elements.
-        Unordered: No indexing or slicing (e.g., no set[0]).
-        Optimized for Membership Testing: Checking if an item exists in a set is fast.
-
-        Example --->
-
-            my_set = {1, 2, 3, 4, 4}  # Duplicates are removed
-            print(my_set)  # Output: {1, 2, 3, 4}
-
-            my_set.add(5)  # Add an element
-            my_set.remove(2)  # Remove an element
-            print(my_set)  # Output: {1, 3, 4, 5}
+__init__ is a special method in Python, also known as a constructor, which is used to initialize an object of a class. This method is defined inside the class and is executed automatically when an object (instance) of the class is created. The primary purpose of a constructor is to declare and initialize the data members (attributes) of the object with initial values.
 
 
 
-    2. What is a Frozenset?
-        A frozenset is an immutable version of a set. Once created, it cannot be changed (no adding or removing elements).
 
-        Key Points:
-        Immutable: Cannot be modified after creation.
-        Hashable: Can be used as a key in a dictionary or an element in another set.
-        Unordered: Like a set, it does not support indexing or slicing.
+Example of __init__ (Constructor):
+------------------------------------
 
-        Example -->
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make   # Instance variable
+        self.model = model # Instance variable
+        self.year = year   # Instance variable
 
-        my_frozenset = frozenset([1, 2, 3, 4])
-        print(my_frozenset)  # Output: frozenset({1, 2, 3, 4})
+    def display_info(self):
+        print(f"{self.year} {self.make} {self.model}")
 
-        # Immutable, so these operations are not allowed:
-        # my_frozenset.add(5) -> Raises AttributeError
-        # my_frozenset.remove(2) -> Raises AttributeError
+# Creating an object of the class
+my_car = Car("Toyota", "Camry", 2021)
 
-
-    3. Differences Between Set and Frozenset ?
-
-        Feature	                        Set	                            Frozenset
-        Mutability	                    Mutable	                        Immutable
-        Duplicates Allowed	             No	                                No
-        Hashable	                     No	            Yes (can be used as a dictionary key or set element)
-        Modifications	    Supports adding/removing elements	Does not allow modifications
-        Usage	                    Dynamic collections	Fixed collections (e.g., when elements shouldn't change)
-
-
-_____________________________________________________________________________________________________________________
-
-
-4. Tuple and list in Python.
-Answer -->
-
-        List --> List is a collection of iteams. list store different type of data like int , float , str , bool etc.
-                 list is a mutable means once we define so we can change the structure we can add something we can delete something and also we can add something.list is a ordered collection. and list is define using square bracets [].
-
-        Tuple --> Tuple is a collection of iteam. tuple is also store different type of data like int , 
-                float ,str , bool etc. tuple is immutable means once we define tuple so we can not change the structure means we can not add , delete , update and etc. tuple is also ordered collection. and its defined using paranthesis ().
+# Accessing object's method
+my_car.display_info()  # Output: 2021 Toyota Camry
 
 
 
-    Differences between List and Tuple
-    ___________________________________
-
-                        List                                               Tuple
-        1.  List is a Mutable. means once we defined            Tuple is a Immutable means once we defined so we can
-            so we can change the structure we can               not change the structure we can not update ,delete,
-            add , delete , update list element.                 and add.
-
-        2. List is defined using square brackets[].             Tuple is defined using parentheses ().
-
-        3. List is Slow.                                        Tuple is Fast    
-
-        4. List consume more memory Because it is               Tuple Consume less memory Because it is a Fixed
-           Dynamic collection.                                  collection.
-
-        5. List can store any type of data.                     Tuple can also store any type of data.
-
-        6. Lists are not hashable                               Tuples are hashable (can be used as dictionary 
-           (cannot be used as dictionary keys).	                keys if they contain only hashable objects).
-           
+___________________________________________________________________________________________________________________
 
 
+15. What is Break , continue and pass?
 
-_____________________________________________________________________________________________________________________
+In python break , continue and pass are control flow statements used in a  loop
 
-5. Generators and iterators ?
-Answer-->
-________
+Break
+-----
+break statement is used to terminate the loop permanently. You use break when you want to stop the 
+loop before it finishes all iterations, typically when a certain condition is met.
 
-        Iterators --> 
+Example
+--------
+
+for i in range(5):
+    if i == 3:
+        break;
+    print(i)
+
+
+
+continue
+---------
+The continue statement is used to skip the current iteration of a loop and move on to the next iteration.
+You use continue when you want to skip over specific iterations, but continue the loop.
+
+Example
+-------
+for i in range(5):
+    if i == 2:
+        continue  # Skip the iteration when i is 2
+    print(i)
+
+
+
+pass 
+-----
+The pass statement is like a silent command. when you want a statement syntactically but corresponding this statement you do not want any action so you can use pass statement.
+
+Example
+-------
+for i in range(5):
+    if i ==2:
+        pass
+    else:
+        print(i)
+
+
+
+____________________________________________________________________________________________________________________
+
+16. What is Docstring ?
+
+A docstring is a string literal used to document code in Python. It is placed at the beginning of a function, class, or module and serves as an inline description to explain the purpose and functionality of that code. Docstrings are written in triple quotes (""" """) and can span multiple lines. They help other developers understand the code, its parameters, return values, and any other relevant details without needing to read through the entire implementation.
+
+Key Points:
+------------
+1. Docstrings provide a convenient way to document Python code.
+2. They are accessible via the help() function and the __doc__ attribute.
+3. They are used for self-documenting code, which makes code easier to maintain and understand.
+
+Example:
+--------
+def multiply(x, y):
+    """Returns the product of two numbers."""
+    return x * y
+
+print(multiply(10,20))
+print(multiply.__doc__)
+
+
+
+____________________________________________________________________________________________________________________
+
+17. What is slicing ?
+
+Slicing is a technique used to extract a portion of sequence like a list , tuple , string by specifying a range of indices. It allows you to get a subset of elements from the original sequence.
+
+
+Syntax of Slicing:
+------------------
+sequence[start:end:step]
+
+
+start: The index where the slice begins (inclusive). Default is 0.
+end: The index where the slice ends (exclusive). Default is the length of the sequence.
+step: The step size or interval between elements. Default is 1.
+
+
+Examples:
+----------
+
+1. Slicing a List:
+
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+sliced_list = numbers[2:6]
+print(sliced_list)
+Output: [2, 3, 4, 5]
+
+Here, the slice starts from index 2 (inclusive) and goes up to index 6 (exclusive).
+
+
+2. Slicing a String:
+
+text = "Python"
+sliced_text = text[1:4]
+print(sliced_text)
+Output: yth
+
+The slice starts at index 1 and ends before index 4.
+
+
+3. Using step:
+
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+sliced_list = numbers[1:8:2]
+print(sliced_list)
+Output:[1, 3, 5, 7]
+
+Here, step is 2, so it takes every second element between indices 1 and 7.
+
+
+
+____________________________________________________________________________________________________________________
+
+18. What is List ?
+
+A list is one of the most commonly used data structures in Python. list is a collection of iteam list can contain different type of data like int , float , bool , etc. list is a orderd and mutable means once we defined list so we can change the structures of list we can add something , we can delete something and also we can update something.
+
+in python we can create a list using the square brackets [ ] and each iteam seperated my [,].
+
+
+
+
+Creating a List:
+----------------
+my_list = [1, 2, 3, 4, 5] 
+another_list = ["apple", "banana", "cherry"]
+mixed_list = [1, "apple", 3.14, True]
+
+
+Accessing Elements:
+-------------------
+You can access the elements of a list using indexing. Indexing starts from 0.
+
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])  # Output: apple
+print(fruits[1])  # Output: banana
+print(fruits[-1])  # Output: cherry (accessing the last element)
+
+
+
+Modifying Lists:
+----------------
+Since lists are mutable, you can change their content after creation.
+
+1. Changing an element
+------------------------
+fruits = ["apple", "banana", "cherry"]
+fruits[0] = "orange"
+print(fruits)  # Output: ['orange', 'banana', 'cherry']
+
+
+
+2. Adding elements:
+--------------------
+Append: Adds an element to the end of the list.
+
+fruits = ["apple", "banana", "cherry"]
+fruits.append("grapes")
+print(fruits)  # Output: ['orange', 'banana', 'cherry', 'grapes']
+
+
+Insert: Inserts an element at a specific index.
+
+fruits.insert(1, "kiwi")  # Adds 'kiwi' at index 1
+print(fruits)  # Output: ['orange', 'kiwi', 'banana', 'cherry', 'grapes']
+
+
+
+3. Removing elements:
+---------------------
+
+Remove: Removes the first occurrence of a specific element.
+
+fruits.remove("banana")
+print(fruits)  # Output: ['orange', 'kiwi', 'cherry', 'grapes']
+
+Pop: The pop method is remove last element from the list by default but if you give the specific index so 
+     pop method remove specific elemenet from the list.
+
+removed_item = fruits.pop(2)  # Removes and returns the item at index 2
+print(removed_item)  # Output: cherry
+print(fruits)  # Output: ['orange', 'kiwi', 'grapes']
+
+
+
+4. Clearing all elements:
+-------------------------
+
+fruits.clear()
+print(fruits)  # Output: []
+
+
+
+
+____________________________________________________________________________________________________________________
+
+
+
+19. What is Tuple?
+
+A Tuple is one of the most commonly used data structures in Python. tuple is a collection of iteam tuple can contain different type of data like int , float , bool , etc. list is a orderd and immutable means once we defined tuple so we can't change the structures of tuple we can't add something , we can't delete something and also we can't update something.
+
+in python we can create a tuple using the parentheses ( ) and each iteam seperated my (,).
+
+
+
+
+Creating a Tuple:
+------------------
+my_tuple = (1, 2, 3)  # A tuple of integers
+another_tuple = ("apple", "banana", "cherry")  # A tuple of strings
+mixed_tuple = (1, "apple", 3.14, True)  # A tuple with mixed data types
+single_item_tuple = (5,)  # A tuple with one item (note the comma)
+
+
+
+
+
+Accessing Elements:
+-------------------
+You can access elements in a tuple using indexing. Indexing starts at 0.
+
+fruits = ("apple", "banana", "cherry")
+print(fruits[0])  # Output: apple
+print(fruits[1])  # Output: banana
+print(fruits[-1])  # Output: cherry (accessing the last element)
+
+
+
+
+Modifying a Tuple:
+------------------
+Tuples are immutable, meaning you cannot change, add, or remove elements after they are created. However, you can perform operations like concatenation to create a new tuple.
+
+
+# Trying to change an element (will raise an error)
+# fruits[0] = "orange"  # This will raise a TypeError
+
+# Concatenating two tuples (creates a new tuple)
+new_fruits = fruits + ("grapes",)
+print(new_fruits)  # Output: ('apple', 'banana', 'cherry', 'grapes')
+
+
+
+____________________________________________________________________________________________________________________
+
+
+
+20. What is Dictionary?
+
+A dictionary is a collection of key:value pairs. and in a dictionary each key is unique. it is unorder and it is mutable we can update the value through the key.
+
+
+
+
+Creating a Dictionary:
+----------------------
+You can create a dictionary by enclosing key-value pairs in curly braces { }, with keys and values separated by colons.
+
+
+# Example of a dictionary
+my_dict = {
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+}
+
+
+
+
+Accessing Elements:
+--------------------
+You can access the value of a key using square brackets [] or the get() method.
+
+
+print(my_dict["name"])  # Output: John
+print(my_dict.get("age"))  # Output: 30
+
+
+
+
+
+Modifying a Dictionary:
+------------------------
+Since dictionaries are mutable, you can modify them after creation.
+
+1. Changing a value:
+--------------------
+
+my_dict["age"] = 31  # Update the value of "age"
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'city': 'New York'}
+
+
+
+2. Adding a new key-value pair:
+-------------------------------
+
+my_dict["email"] = "john@example.com"  # Adding a new key-value pair
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'city': 'New York', 'email': 'john@example.com'}
+
+
+
+
+3. Removing a key-value pair:
+-----------------------------
+Using del: Deletes a specific key-value pair.
+
+del my_dict["city"]
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'email': 'john@example.com'}
+
+
+
+Using pop(): Removes and returns the value for the specified key.
+
+removed_value = my_dict.pop("age")
+print(removed_value)  # Output: 31
+print(my_dict)  # Output: {'name': 'John', 'email': 'john@example.com'}
+
+
+
+Using popitem(): Removes and returns the last inserted key-value pair.
+
+last_item = my_dict.popitem()
+print(last_item)  # Output: ('email', 'john@example.com')
+
+
+Using clear(): Removes all items from the dictionary.
+
+my_dict.clear()
+print(my_dict)  # Output: {}
+
+
+
+
+
+Dictionary Methods:
+-------------------
+Dictionaries have several useful built-in methods. Here are some of the most common:
+
+
+keys(): Returns a view object of all the keys in the dictionary.
+print(my_dict.keys())  # Output: dict_keys(['name', 'age', 'city'])
+
+
+values(): Returns a view object of all the values in the dictionary.
+print(my_dict.values())  # Output: dict_values(['John', 31, 'New York'])
+
+
+items(): Returns a view object of all the key-value pairs in the dictionary.
+print(my_dict.items())  # Output: dict_items([('name', 'John'), ('age', 31), ('city', 'New York')])
+
+get(): Returns the value for a specified key (or None if the key does not exist).
+print(my_dict.get("name"))  # Output: John
+
+
+pop(key): Removes and returns the value of the specified key.
+print(my_dict.pop("age"))  # Output: 31
+
+
+update(): Adds or updates key-value pairs from another dictionary or iterable.
+my_dict.update({"address": "123 Street", "email": "john@example.com"})
+print(my_dict)
+
+
+____________________________________________________________________________________________________________________
+
+
+21. What is Set?
+
+set is a collection of iteam, set store different type of data like int , float , str , bool and etc. 
+it is mutable means once we define so we can change the elemenet , it is unorder and does't contain duplicate element.
+
+
+
+
+Creating a Set:
+---------------
+You can create a set by placing elements inside curly braces {} or using the set() function.
+
+# Example of a set
+my_set = {1, 2, 3, 4}
+another_set = set([1, 2, 3, 4])
+print(my_set)  # Output: {1, 2, 3, 4}
+
+# Set with mixed data types
+mixed_set = {1, "apple", 3.14, (1, 2)}
+print(mixed_set)  # Output: {1, 3.14, "apple", (1, 2)}
+
+
+
+
+
+Adding and Removing Elements:
+-----------------------------
+You can add and remove elements from a set using various methods.
+
+Adding an element:
+------------------
+my_set.add(5)  # Adds 5 to the set
+print(my_set)  # Output: {1, 2, 3, 4, 5}
+
+
+Removing an element:
+-------------------
+my_set.remove(2)  # Removes 2 from the set (raises an error if element does not exist)
+print(my_set)  # Output: {1, 3, 4, 5}
+
+# Using discard() (doesn't raise an error if the element is not found)
+my_set.discard(10)  # No error even though 10 is not in the set
+
+
+Popping an element: Removes and returns a random element from the set.
+--------------------
+popped_item = my_set.pop()
+print(popped_item)  # Output: (a random element)
+print(my_set)  # Set without the popped element
+
+
+Clearing the set: Removes all elements from the set.
+-----------------
+my_set.clear()
+print(my_set)  # Output: set()
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+22. What is difference between list and Tuple ?
+
+
+                            List                                        Tuple
+1. List is a mutable means once you defined list               Tuple is a immutable means once you defined a tuple
+   So we can change the structure of list we can               So we can not change the structure of tuple we can 
+   add something , we can update something and                 not update something we can not delete,or not add.
+   we can delete something.
+
+
+2. List is defined using square brackets [].                   Tuple is defined using parentheses ().
+
+3. List is slow.                                               Tuple is a fast.
+
+4. List consume more memory.                                   Tuple consume less memory.
+
+5. List is a dynamic collection.                               Tuple is a fixed collection.
+
+
+6. Lists are not hashable                                   Tuples are hashable (can be used as dictionary 
+(cannot be used as dictionary keys).	                    keys if they contain only hashable objects).
+
+
+
+___________________________________________________________________________________________________________________
+
+23. What is list comprehension?
+
+
+List comprehension is a concise way to create lists in Python. It allows you to generate a new list by applying an expression to each item in an existing iterable (like a list, tuple, or range) and optionally filtering elements based on a condition.
+
+It provides a more readable and compact way of writing loops that build lists.
+
+
+Syntax:
+-------
+
+[expression for item in iterable if condition]
+
+
+Example -
+-------
+Basic List Comprehension:
+
+1. Create a list of squares of numbers from 1 to 5:
+
+squares = [x**2 for x in range(1, 6)]
+print(squares)  # Output: [1, 4, 9, 16, 25]
+With a Condition (Filtering):
+
+
+
+2. Create a list of even numbers from 1 to 10:
+
+evens = [x for x in range(1, 11) if x % 2 == 0]
+print(evens)  # Output: [2, 4, 6, 8, 10]
+
+
+3. Convert a list of strings to uppercase:
+
+words = ['hello', 'world', 'python']
+uppercase_words = [word.upper() for word in words]
+print(uppercase_words)  # Output: ['HELLO', 'WORLD', 'PYTHON']
+
+
+
+
+___________________________________________________________________________________________________________________
+
+24. What is dictionary comprehension?
+
+Dictionary comprehension is similar to list comprehension, but it allows you to create dictionaries in a more concise and readable way. It enables the construction of dictionaries by applying an expression to each item in an iterable and optionally filtering the items based on a condition.
+
+
+Syntax:
+-------
+
+{key_expression: value_expression for item in iterable if condition}
+
+
+Example:
+---------
+
+
+Examples:
+
+Basic Dictionary Comprehension:
+-------------------------------
+
+1. Create a dictionary where the keys are numbers from 1 to 5 and the values are their squares:
+
+squares = {x: x**2 for x in range(1, 6)}
+print(squares)  
+# Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+
+2.Create a dictionary where the keys are numbers from 1 to 10, and the values are the squares of even numbers only:
+
+even_squares = {x: x**2 for x in range(1, 11) if x % 2 == 0}
+print(even_squares)  
+# Output: {2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+
+
+3. Suppose you have a dictionary, and you want to swap its keys and values. You can use dictionary comprehension to achieve this:
+
+original = {'a': 1, 'b': 2, 'c': 3}
+swapped = {value: key for key, value in original.items()}
+print(swapped)  
+# Output: {1: 'a', 2: 'b', 3: 'c'}
+
+
+4. Create a dictionary with numbers from 1 to 5 as keys, and their cubes as values:
+
+cubes = {x: x**3 for x in range(1, 6)}
+print(cubes)  
+# Output: {1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
+
+
+___________________________________________________________________________________________________________________
+
+25. What is lambda function?
+
+lambda function is a anonymous function because it is not declared by the standard manner by using the def keyword.
+lambda function takes n number of argument but return only just one expression. lambda function is also called a one line function. we can define lambda function using the lambda keyword.
+
+
+Syntax:
+-------
+lambda arguments: expression
+
+
+Examples:
+----------
+
+1. A function that adds two numbers:
+
+add = lambda x, y: x + y
+print(add(3, 5))  # Output: 8
+Lambda with a Condition (Conditional Expressions):
+
+
+2. A function that checks if a number is even or odd:
+
+even_odd = lambda x: "Even" if x % 2 == 0 else "Odd"
+print(even_odd(4))  # Output: Even
+print(even_odd(5))  # Output: Odd
+
+
+Using Lambda with map(), filter(), and sorted():
+
+map(): Applies a lambda function to each item of an iterable.
+
+numbers = [1, 2, 3, 4, 5]
+squares = list(map(lambda x: x**2, numbers))
+print(squares)  # Output: [1, 4, 9, 16, 25]
+filter(): Filters the elements of an iterable based on a condition.
+
+
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Output: [2, 4, 6]
+sorted(): Sorts an iterable based on a lambda function (e.g., sorting by length).
+
+
+words = ['apple', 'banana', 'cherry']
+sorted_words = sorted(words, key=lambda word: len(word))
+print(sorted_words)  # Output: ['apple', 'cherry', 'banana']
+
+
+Lambda Function with reduce():
+Using reduce() from the functools module to perform a cumulative operation:
+
+from functools import reduce
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers)
+print(result)  # Output: 10 (sum of the list)
+
+
+
+___________________________________________________________________________________________________________________
+
+
+26. What is Iteator?
+
+Iterators --> 
         __________
         An iterator is a powerful concept in Python that helps you to access the elements of a collection one at a time, But iterator store whole collection in a memory. so it comsume more memory. but whenever we working of large data set and we want to access one value at a time so we can use iterator
 
@@ -163,7 +1213,12 @@ ________
 
 
 
-        Generator --->
+__________________________________________________________________________________________________________________
+
+
+27. What is Generator?
+
+Generator --->
         ___________
 
         A generator in Python is a special type of iterator that allows you to iterate over a sequence of values, but unlike a normal iterator, it doesn't store the entire sequence in memory at once. Instead, a generator produces each value on the fly (lazily) when requested, making it more memory-efficient, especially when working with large data sets or streams of data.
@@ -195,91 +1250,48 @@ ________
 
 
 
-_____________________________________________________________________________________________________________________
+
+___________________________________________________________________________________________________________________
+
+28. What is Decorator?
+
+Decorator is a special type of a function that takes another function as an argument and extend and modified the Behavior of existing function without changing the original function code. 
 
 
-6. iter() and next() in Python.
-Answer ->
-________
+Example:
+--------
 
-    1. iter() Function:
-    ___________________
-    The iter() function is used to convert an iterable (like a list, tuple, or string) into an iterator and if you print the iterator so its return the iterator objects.
+def my_decorator(func):
+    def wrapper():
+        print("Before function execution")
+        func()
+        print("After function execution")
+    return wrapper
 
+@my_decorator
+def say_hello():
+    print("Hello!")
 
-    2. next() Function:
-    ___________________
-    The next() function is used to get the next item from the iterator, one at a time.
-
-    How next() works:
-    Each time you call next(), it returns the next item in the sequence.
-    If the iterator is exhausted (all items have been returned), next() raises a StopIteration exception.
-
-
-
-
-____________________________________________________________________________________________________________________
-
-7. Multithreading  in Python.
-Answer -->
-_______
-
-Multithreading -->
-______________
-
-Multithreading is a technique where a program can perform multiple tasks At the same time by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
-
-In Python , we can use threding module to implements multithreading
-
-
-Why Use Multithreading?
-_______________________
-
-1. Concurrency: 
-    Allows multiple tasks to run at the same time, improving the responsiveness of applications.
-    Example: Handling user input while performing background computations.
-
-2. Efficient I/O Operations: 
-    Useful for tasks like file reading, database queries, or network requests where threads can perform other operations while waiting for I/O to complete.
-
-
-Basic Multithreading Example -
-_____________________________
-import threading
-import time
-
-def print_numbers():
-    for i in range(5):
-        print(f"Thread 1: {i}")
-        time.sleep(1)
-
-def print_letters():
-    for ch in 'abcde':
-        print(f"Thread 2: {ch}")
-        time.sleep(1)
-
-# Create threads
-thread1 = threading.Thread(target=print_numbers)
-thread2 = threading.Thread(target=print_letters)
-
-# Start threads
-thread1.start()
-thread2.start()
-
-# Wait for threads to complete
-thread1.join()
-thread2.join()
-
-print("All threadsj have completed.")
+say_hello()
 
 
 
-____________________________________________________________________________________________________________________
+output:
+-------
+
+Before function execution
+Hello!
+After function execution
 
 
 
-8. What is Pickling and unpickling in Python ?
-Answer => pickling and unpickling is a process in python to serialize and deserialize python objects.
+___________________________________________________________________________________________________________________
+
+
+29. What is pickling and unpickling?
+
+
+pickling and unpickling is a process in python to serialize and deserialize python objects.
 
 
 Pickling -> Pickling is a process to convert python object like ( list,dictionary). into the byte stream 
@@ -332,332 +1344,422 @@ Why we use Pickling and unpickling ->
 
 
 
-_____________________________________________________________________________________________________________________
 
 
 
+___________________________________________________________________________________________________________________
 
-9. Currying in Python ?
-Answer ->
 
-Curring is a technique in the functional programming. Where a function that takes multiple arguments is converted into a sequence of functions, each function taking one argument.
+30. What is Monkey Patching?
 
-In simple terms, currying allows us to break down a function that takes several parameters into multiple smaller functions, each accepting a single argument.
 
 
 
 
-Why We Use Currying:
-____________________
-1. Reusability: We can partially apply a function by fixing some arguments and passing the remaining ones later.
 
-2. Cleaner Code: Currying helps break down the code into smaller, modular functions, making the code more readable and maintainable.
 
-3. Flexibility: Currying makes it easy to create new functions by applying some arguments first and using them later for different contexts.
 
 
 
-Example of curring :
-_______________________
 
-def multiply(x):
-    def multiply_by_y(y):
-        def multiply_by_z(z):
-            return x * y * z
-        return multiply_by_z
-    return multiply_by_y
 
-# Pehle ek argument fix karte hain
-partial_function = multiply(2)
 
-# Baad mein baaki arguments pass karenge
-result = partial_function(3)(4)  # 2 * 3 * 4 = 24
-print(result)  # Output: 24
 
+___________________________________________________________________________________________________________________
 
 
+31. What are Access Specifiers?
 
-_____________________________________________________________________________________________________________________
+Access Specifiers or access modifier in python programming are used to limit the access of class variable and class method outside of a class.
 
+But in python there is no much restrication to access class variable and method compare to another programming language like java and c++. because in python everything is public and we can access private , and protected member also but we use access specifier for our understanding.
 
-10. Explain the concept of variable scoping in Python and provide examples of how global and local variables 
-    are accessed within different scopes.
+Now i will explain one by one -
 
-Answer ->
 
-Scope is the region or area in the program where a variable is defined and determines where that variable can be accessed or modified.
 
-Python follows a specific set of rules to look up and assign values to variables depending on where they are declared. This is  established by the LEGB rule:
+1. Public Access Specifier
+---------------------------
+"In Python, all class variables and methods are public by default. This means they can be directly accessed and modified from anywhere, both inside and outside the class."
 
 
-1. Local Scope ->A variable is in the local scope if it is defined inside a function. It can only be accessed 
-                    within that function.
+Example:
+--------
 
-    Example -> 
-        def greet():
-        message = "Hello, World!"  # Local variable
-        print(message)
+class Demo:
+    def __init__(self):
+        self.var = "Public Variable"
 
-        greet()
-        # print(message)  # Error! message is local to greet() function
+    def method(self):
+        print("Public Method")
 
+# Accessing public members
+obj = Demo()
+print(obj.var)  # Output: Public Variable
+obj.method()    # Output: Public Method
 
 
 
-2. Global Scope
-A variable is in the global scope if it is defined outside of any function. It can be accessed both inside and outside functions.
 
-Example ->
-            x = 10  # Global variable
+2. Protected Access Specifier:
+-------------------------------
+protected members are meant to be used within the class and its subclasses.
+You can still access them from outside the class, but it’s considered bad practice.
+Python uses a single underscore (_) before the name to indicate that a member is protected.
 
-            def print_x():
-                print(x)  # Accessing the global variable 'x'
 
-            print_x()  # Prints 10
-            print(x)   # Also prints 10 outside the function
+Usage: Protected members are used when you want to allow subclasses to access and modify the attribute, 
+------  but you don’t want other parts of the code to interact with them directly.
 
 
+Example:
+--------
+class Parent:
+    def __init__(self):
+        self._protected_var = "I am protected"
 
+class Child(Parent):
+    def show_protected(self):
+        print(self._protected_var)
 
-3.Enclosing Scope (Nested Functions)
-A variable in an enclosing scope refers to a variable that is defined in an outer (enclosing) function and can be accessed by an inner (nested) function.
+obj = Child()
+obj.show_protected()  # Output: I am protected
+print(obj._protected_var)  # Not recommended, but possible
 
-Example ->
-            def outer_function():
-                outer_var = "I'm in the outer function"  # Variable in outer function
-                
-                def inner_function():
-                    print(outer_var)  # Accessing variable from outer function
-                
-                inner_function()
 
-            outer_function()
 
+3. Private Access Specifier:
+-----------------------------
+Definition: Private members are meant to be hidden and accessed only within the class.
+----------
 
+How It Works: Python uses name mangling to make private members harder to access from outside. It renames 
+-------------   the member internally by adding the class name as a prefix.
 
-4. Built-in Scope
-Python provides a set of built-in functions and objects, like print(), len(), etc., which are always accessible and available globally.
+Syntax: Add a double underscore (__) before the member name.
+-------
 
 
-Example ->
-print(len("Hello"))
+Example:
+--------
 
+class MyClass:
+    def __init__(self):
+        self.__private_var = "Hidden"
 
+    # Getter method
+    def get_private(self):
+        return self.__private_var
 
+    # Setter method
+    def set_private(self, value):
+        self.__private_var = value
 
+# Accessing private members
+obj = MyClass()
 
+# Using the getter
+print(obj.get_private())  # Output: Hidden
 
-_____________________________________________________________________________________________________________________
+# Using the setter to modify the private variable
+obj.set_private("Updated Value")
+print(obj.get_private())  # Output: Updated Value
 
+# Accessing directly (Not recommended)
+# print(obj.__private_var)  # This will raise an AttributeError
+print(obj._MyClass__private_var)  # Accessing using name mangling (Not recommended)
 
-11. Shellow Copy and Deep Copy ?
-Answer -> 
 
 
-Whenever we work with mutable objects and want to create a copy, we have two types of copies available: shallow copy and deep copy.
+___________________________________________________________________________________________________________________
 
+32. What is the function?
 
-1. Shellow Copy => 
+Function is a code of block. it's perform some specific task whenever it is called. Function help to break our program into smaller chunks. function is used to code reuseability. and in python we are defined function using the def keyword.
 
-A shallow copy creates a new object and copies the references of the nested objects instead of duplicating them. If you update a nested object in the copied object, the changes will also reflect in the original object because both share the same reference to the nested object.
 
+There are two types of function available in python -
+1. Pre-defined function
+2. User defined function
 
-Example =>
 
-        import copy
 
-        original = [1, 2, [3, 4]]  # Original list with a nested list
-        shallow_copy = copy.copy(original)  # Create a shallow copy
+Defining a Function
+-------------------
 
-        # Modify the nested object in the copied list
-        shallow_copy[2][0] = 99
+def function_name(parameters):
+    """
+    Optional docstring explaining the function.
+    """
+    # Function body
+    return value  # Optional
 
-        print("Original:", original)  # Output: [1, 2, [99, 4]]
-        print("Shallow Copy:", shallow_copy)  # Output: [1, 2, [99, 4]]
 
 
-        We can also use copy function 
-        Example =>
 
-        original = {1, 2, 3}
-        shallow_copy = original.copy()
+Function Arguments
+-------------------
+1. Positional Arguments
+2. Default Arguments
+3. Keyword Arguments
+4. Variable-Length Arguments
 
-        print("Original:", original)
-        print("Shallow Copy:", shallow_copy)
 
+1. Positional Arguments
+-----------------------
+These are the most common type of arguments and are passed to a function in the same order as they are defined in the function signature.
 
+Example:
+--------
+def add(a, b):
+    return a + b
 
-2. Deep Copy =>
-  
-  A deep copy creates a completely independent copy of an object. Unlike a shallow copy, a deep copy does not share references to nested objects between the original and the copy. If you make changes to the nested objects in the copy, it will not affect the original object.
+print(add(5, 3))  # Output: 8
 
 
-Example =>
+2. Default Arguments:
+---------------------
+These arguments have default values, and if the caller does not provide a value, the default is used.
 
+Example:
+--------
+def greet(name="Guest"):
+    return f"Hello, {name}!"
 
-            import copy
+print(greet())         # Output: Hello, Guest!
+print(greet("Alice"))  # Output: Hello, Alice!
 
-            l = [10,20,30,40,50,[1,2,3,4]]
 
-            deep_copy_example = copy.deepcopy(l)
 
-            # print(deep_copy_example)
+3. Keyword Arguments
+---------------------
+These are arguments passed by explicitly specifying the parameter name in the function call, allowing you to skip or rearrange arguments.
 
-            deep_copy_example[5][1] = 20
+Example:
+--------
+def introduce(name, age):
+    return f"My name is {name}, and I am {age} years old."
 
+print(introduce(age=30, name="Alice"))  # Output: My name is Alice, and I am 30 years old.
 
-            print("origin :- ",l)
-            print("Copy :- ",deep_copy_example)
 
 
+4. Variable-Length Arguments
+----------------------------
+These allow functions to accept a variable number of arguments.
 
 
-_____________________________________________________________________________________________________________________
+a. args (Non-Keyword Arguments)
+-------------------------------
+Collects additional positional arguments into a tuple.
 
+Example:
+--------
+def sum_all(*numbers):
+    return sum(numbers)
 
-12. What is GIL (Global Interpreter Lock) ?
-Answer =>
+print(sum_all(1, 2, 3, 4))  # Output: 10
 
-GIL stands for Global Interpreter Lock it is a mechanism that ensure that only one task executing at a time.
-This means that even if you have a multiple thread in your program. and only one thread  executing at a time.
 
 
 
-Why GIL exist in python
-_______________________
-Memory management: 
+b. **kwargs (Keyword Arguments)
+--------------------------------
+Collects additional keyword arguments into a dictionary.
 
-The GIL helps to manage memory safely in Python, especially when there are multiple threads running. Without the GIL, threads could try to access and modify the same piece of memory simultaneously, causing race conditions and other bugs.
+Example:
+--------
 
+def print_info(**info):
+    for key, value in info.items():
+        print(f"{key}: {value}")
 
+print_info(name="Alice", age=30, city="New York")
+# Output:
+# name: Alice
+# age: 30
+# city: New York
 
-How Does GIL Affect Multithreading?
-___________________________________
-1. Single-threaded performance (No problem with GIL)
-In a single-threaded program, the GIL is not an issue because there’s only one thread running. The program will work as expected, and it can take full advantage of the CPU core it’s running on.
 
-2. Multithreaded programs (GIL slows things down)
-In a multithreaded program (where you have more than one thread running), the GIL limits performance because it only allows one thread to run Python code at a time. So even if you have a multi-core processor, Python threads won't run in parallel on those cores. Instead, they take turns running, which can result in less efficient performance for CPU-heavy tasks.
 
+___________________________________________________________________________________________________________________
 
 
+33. What is OOPS ?
 
+OOPs (Object-Oriented Programming System) is a way of organizing and designing your code using objects. It makes your code more structured, reusable, and easier to maintain.
 
+There are four pillers of OOPS -
+1. Inheritance
+2. polymorphism
+3. Abstraction
+4. Encapsulation
 
-_____________________________________________________________________________________________________________________
 
 
-13. What is the purpose of the @property decorator in Python?
-Answer =>
+1. Inheritance
+--------------
+In oops , Inheritance is a ability to inherite attribute and methods from the already written classes into the newly classes, this newly classes are called child class or derived class and the already written classes are called base classes or Parent class. and this proccess is called inheritance.
 
+There are 5 types of inheritance -
 
-The @property decorator in Python is a way to define a getter method that can be accessed like an attribute. In other words, it allows a method to be called without parentheses (like an attribute), but still perform some logic or computation behind the scenes.
+1. Single Inheritance: One child inherits from one parent.
+---------------------
+Example of Single Inheritance:
+--------------------------------
+# Parent Class
+class Animal:
+    def speak(self):
+        print("I can make a sound!")
 
+# Child Class
+class Dog(Animal):
+    def bark(self):
+        print("Woof! Woof!")
 
-Example ->
+# Create an object of the Child Class
+my_dog = Dog()
+my_dog.speak()  # Inherited method
+my_dog.bark()   # Child class method
 
-class Circle:
-    def __init__(self, radius):
-        self._radius = radius  # Private attribute
 
-    @property
-    def radius(self):
-        return self._radius
 
-    @radius.setter
-    def radius(self, value):
-        if value < 0:
-            raise ValueError("Radius cannot be negative!")
-        self._radius = value
+2. Multiple Inheritance: A child inherits from more than one parent.
+------------------------
+Example of Multiple inheritance:
+-------------------------------
+# Parent Class 1
+class Father:
+    def skills(self):
+        print("Father: Good at driving.")
 
-circle = Circle(5)
-print(circle.radius)  # Output: 5
-circle.radius = 10    # Updates radius to 10
-print(circle.radius)  # Output: 10
-circle.radius = -1    # Raises ValueError
+# Parent Class 2
+class Mother:
+    def hobbies(self):
+        print("Mother: Loves painting.")
 
+# Child Class
+class Child(Father, Mother):
+    def own_skills(self):
+        print("Child: Good at coding.")
 
+# Create an object of the Child class
+child = Child()
+child.skills()  # Inherited from Father
+child.hobbies()  # Inherited from Mother
+child.own_skills()  # Child's own method
 
 
-_____________________________________________________________________________________________________________________
 
 
 
+3. Multilevel Inheritance: A child inherits from a parent, and then its child inherits from it.
+--------------------------
 
-14. How does Python handle exceptions? Explain how you can handle exceptions in Python.
-Answer =>
+Example of Multilevel Inheritance:
+----------------------------------
+# Parent Class
+class Animal:
+    def speak(self):
+        print("I can make a sound!")
 
+# Child Class 1
+class Mammal(Animal):
+    def walk(self):
+        print("I can walk!")
 
-So in python the exception handling is the process its protect our application from the runtime error.
+# Child Class 2
+class Dog(Mammal):
+    def bark(self):
+        print("Woof! Woof!")
 
+# Create an object of the Dog class
+my_dog = Dog()
+my_dog.speak()  # From Animal class
+my_dog.walk()   # From Mammal class
+my_dog.bark()   # From Dog class
 
-i give two senerio
-suppose if you are working on a project and during excution any error occurs in your program so you can fix this error easily
-but the second senerio suppose you have deployed you'r application and now some errror occurs in your application so it is posible error can crash your application
-so for this case we can use exception handling 
 
-where we define try , except and finally and else block
 
-in main functionality i know some error occures in future so i will defined the main logic inside the try block and if try block occurs any errror so my except block will excute>
 
 
+4. Hierarchical Inheritance: Multiple children inherit from one parent.
+----------------------------
+Example of Hierarchical Inheritance:
+------------------------------------
+# Parent Class
+class Animal:
+    def speak(self):
+        print("I can make a sound.")
 
-Example =>
+# Child Class 1
+class Dog(Animal):
+    def bark(self):
+        print("Woof! Woof!")
 
+# Child Class 2
+class Cat(Animal):
+    def meow(self):
+        print("Meow! Meow!")
 
+# Create objects for both child classes
+dog = Dog()
+cat = Cat()
 
-try:
-    # Main functionality that might raise an error
-    result = some_function()
-except SomeSpecificError:
-    # Handle the error if it occurs
-    print("An error occurred!")
-else:
-    # Runs if no error occurs
-    print("Operation successful!")
-finally:
-    # Always runs, no matter what
-    print("Cleanup tasks done.")
+dog.speak()  # Inherited from Animal
+dog.bark()   # Method of Dog
 
+cat.speak()  # Inherited from Animal
+cat.meow()   # Method of Cat
 
 
 
 
-_____________________________________________________________________________________________________________________
 
+5. Hybrid Inheritance: A mix of two or more types of inheritance.
+---------------------
+Example of Hybrid Inheritance
+-----------------------------
 
-15. What is a metaclass in Python and how does it differ from regular classes?
-Answer =>
+# Parent Class
+class Vehicle:
+    def type(self):
+        print("This is a vehicle.")
 
-Metaclass is a special type of a class in python. its control the process of creating class. Whenever you create a new class so python internally it is use metaclass for creting a class.
+# Intermediate Class (Child of Vehicle)
+class Car(Vehicle):
+    def car_type(self):
+        print("This is a car.")
 
+# Another Parent Class
+class Electric:
+    def charge(self):
+        print("This is an electric vehicle.")
 
-Example =>
+# Final Child Class (inherits from Car and Electric)
+class Tesla(Car, Electric):
+    def brand(self):
+        print("This is a Tesla.")
 
-# Apna ek metaclass banate hain
-class MyMeta(type):
-    def __new__(cls, name, bases, dct):
-        print(f"Class {name} create ki ja rahi hai.")
-        return super().__new__(cls, name, bases, dct)
+# Create an object of the Tesla class
+tesla = Tesla()
+tesla.type()       # From Vehicle
+tesla.car_type()   # From Car
+tesla.charge()     # From Electric
+tesla.brand()      # From Tesla
 
-# Ab hum ek class banayenge jisme yeh metaclass use hoga
-class MyClass(metaclass=MyMeta):
-    pass
 
-# Jab yeh run hoga, output yeh hoga:
-# Class MyClass create ki ja rahi hai.
 
 
-_____________________________________________________________________________________________________________________
+                                    ----------**-------------
 
 
 
-16. What is polymorphism in object-oriented programming, and how is it implemented in Python?
-Answer =>
 
+polymorphism :
+-------------
 
-The polymorphism is a core concept of object oriented programming. polymorphism means "Many form"
-You can use the same function , operation and method in different ways depending on a objects or a data type.
+Polymorphism is one of the key concepts in object-oriented programming (OOP). It means "many forms." It allows the same method or operator to have different behaviors depending on the object or data type it is acting upon.
 
 One technique example is like + operator because the + operator add two integer and the + operator also concetention
 of two string so the  name of operator perform different operation according to objects and data type.
@@ -776,13 +1878,310 @@ print(add("Hello", "World"))  # "Hello World" (string concatenation)
 
 
 
+                                    ----------**-------------
 
 
-_____________________________________________________________________________________________________________________
 
 
-17. How Python memory management works ?
-Answer =>
+3. Data Abstraction:
+---------------------
+
+Data Abstraction is a fundamental concept in object-oriented programming (OOP) that focuses on hiding the internal implementation details of a class and exposing only the necessary features or functionalities to the user. This helps in reducing complexity and increasing code readability and usability
+
+
+How we can implement data Abstraction:
+--------------------------------------
+1. Import the ABC module (from abc import ABC, abstractmethod).
+
+2. Create an abstract class by inheriting from the ABC class.
+
+3. Define abstract methods (methods without implementation) using the @abstractmethod decorator.
+
+4. Subclasses must override and implement all abstract methods.
+
+
+Example:
+-------
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+
+2. Provide Concrete Implementations in Subclasses
+
+Create child classes that inherit from the abstract class.
+Implement all abstract methods in the child class.
+
+Example:
+--------
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+
+
+
+
+
+                                        --------------*---------------
+
+
+4. Encapsulation:
+------------------
+Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It refers to the concept of bundling data (attributes) and methods (functions) that operate on that data into a single unit, typically a class.
+
+Encapsulation also involves restricting direct access to certain attributes and methods to ensure controlled access and protect the integrity of the data.
+
+
+
+Key Features of Encapsulation:
+-----------------------------
+
+1. Data Hiding: Prevents direct access to the internal details of an object (e.g., by making attributes private).
+
+2. Controlled Access: Provides methods (getters and setters) to access or modify private data.
+
+3. Modularity: Encapsulation makes the code modular by grouping data and behavior together.
+
+4. Security: Protects sensitive data by hiding it from unauthorized access.
+
+
+
+
+How we can implement Encapsulation:
+-----------------------------------
+1. Public Attributes:
+----------------------
+
+Attributes and methods that can be accessed from anywhere.
+
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name  # Public attribute
+        self.age = age    # Public attribute
+
+# Accessing public attributes
+student = Student("Alice", 20)
+print(student.name)  # Output: Alice
+print(student.age)   # Output: 20
+
+
+2. Protected Attributes
+-----------------------
+
+Attributes prefixed with a single underscore _attribute are protected, meaning they can be accessed within the class and subclasses but are intended to be accessed only when necessary.
+
+class Person:
+    def __init__(self, name):
+        self._name = name  # Protected attribute
+
+class Employee(Person):
+    def display_name(self):
+        return f"Employee Name: {self._name}"
+
+emp = Employee("John")
+print(emp.display_name())  # Output: Employee Name: John
+
+
+
+3. Private Attributes
+----------------------
+Attributes prefixed with double underscores __attribute are private and cannot be accessed directly from outside the class. They can only be accessed through methods within the class.
+
+
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    # Getter method to access private attribute
+    def get_balance(self):
+        return self.__balance
+
+    # Setter method to modify private attribute
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            return f"Deposited {amount}. New balance: {self.__balance}"
+        return "Invalid amount!"
+
+# Accessing private attributes using methods
+account = BankAccount(1000)
+print(account.get_balance())       # Output: 1000
+print(account.deposit(500))        # Output: Deposited 500. New balance: 1500
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+34. What is Exception Handling?
+
+
+So in python the exception handling is the process its protect our application from the runtime error.
+
+
+i give two senerio
+suppose if you are working on a project and during excution any error occurs in your program so you can fix this error easily
+but the second senerio suppose you have deployed you'r application and now some errror occurs in your application so it is posible error can crash your application
+so for this case we can use exception handling 
+
+where we define try , except and finally and else block
+
+in main functionality i know some error occures in future so i will defined the main logic inside the try block and if try block occurs any errror so my except block will excute>
+
+
+
+
+try block:
+----------
+This is where you put the code that might cause an error.
+
+except block:
+-------------
+If an error happens in the try block, this is where you handle it.
+
+else block:
+-----------
+This runs only if no error occurs in the try block.
+
+finally block:
+--------------
+This runs no matter what—whether an error happens or not (for cleanup or finishing tasks).
+
+
+
+
+Example:
+--------
+
+try:
+    # Main functionality that might raise an error
+    result = some_function()
+except SomeSpecificError:
+    # Handle the error if it occurs
+    print("An error occurred!")
+else:
+    # Runs if no error occurs
+    print("Operation successful!")
+finally:
+    # Always runs, no matter what
+    print("Cleanup tasks done.")
+
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+35. What is Multithreding ?
+
+Multithreading -->
+    ______________
+
+Multithreading is a technique where a program can perform multiple tasks At the same time by dividing the work into smaller chunks called "threads". Each thread runs independently, so your program can do more things at the same time.
+
+In Python , we can use threding module to implements multithreading
+
+
+Why Use Multithreading?
+_______________________
+
+1. Concurrency: 
+    Allows multiple tasks to run at the same time, improving the responsiveness of applications.
+    Example: Handling user input while performing background computations.
+
+2. Efficient I/O Operations: 
+    Useful for tasks like file reading, database queries, or network requests where threads can perform other operations while waiting for I/O to complete.
+
+
+Basic Multithreading Example -
+_____________________________
+import threading
+import time
+
+def print_numbers():
+    for i in range(5):
+        print(f"Thread 1: {i}")
+        time.sleep(1)
+
+def print_letters():
+    for ch in 'abcde':
+        print(f"Thread 2: {ch}")
+        time.sleep(1)
+
+# Create threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for threads to complete
+thread1.join()
+thread2.join()
+
+print("All threads have completed.")
+
+
+___________________________________________________________________________________________________________________
+
+
+
+36. What is Recursion?
+
+Recursion in Python is when a function calls itself to solve smaller versions of the same problem until it reaches a stopping point (called the base case). It’s like breaking a big task into smaller, easier tasks.
+
+
+
+Example: Factorial of a Number:
+------------------------------
+Factorial of 5 (5!) means:
+
+
+def factorial(n):
+    if n == 1:  # Base case: stop when n is 1
+        return 1
+    return n * factorial(n - 1)  # Recursive call
+
+
+
+
+How it works:
+-------------
+Input: You call factorial(5).
+
+The function keeps calling itself: 5 * factorial(4), 4 * factorial(3), and so on.
+
+Base case: When factorial(1) is reached, it stops and starts calculating backwards.
+
+Final result: 5 * 4 * 3 * 2 * 1 = 120.
+
+
+
+
+
+___________________________________________________________________________________________________________________
+
+37. How python memory management work?
 
 Python memory management is a process like how Python handles memory for your program. When you create something like a variable, list, or dictionary, Python allocate memory automatically. and When you’re done using it, Python deallocate memory automatically.
 
@@ -864,13 +2263,494 @@ Python handles most of it automatically, so you don’t have to worry about it (
 
 
 
-
-
-_____________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________
 
 
 
-18. What is the difference between append() and extend() methods in Python lists?
+38. What is the difference between (Array , List and Tuple)?
+
+
+1. Defination:
+--------------
+Array:- A collection of elements of the same data type stored in a contiguous memory block.	
+List :- A flexible collection of elements of any data type that can grow or shrink dynamically.	
+Tuple :- An immutable collection of elements of any data type that cannot be changed after creation.
+
+
+
+2. Mutability:
+---------------
+Array :-  Mutable (you can modify, add, or remove elements).	
+List :- Mutable (you can modify, add, or remove elements).	
+Tuple :- Immutable (once created, elements cannot be modified).
+
+
+3. Size Modification:
+---------------------
+Array :- Can grow or shrink dynamically.	
+List :- Can grow or shrink dynamically.	
+Tuple :- Fixed size after creation (cannot add or remove elements).
+
+
+4. Performance:
+---------------
+Array :- Faster for numerical computations because of fixed data types.	
+List :- Slightly slower for numerical tasks but flexible for general usage.	
+Tuple :- More memory-efficient and faster to access due to immutability.
+
+
+
+5. Memory Usage	:
+-----------------
+Array :- Efficient for large datasets of the same type.	
+List:- Requires more memory for mixed-type storage.	
+Tuple :- Most memory-efficient because of immutability.
+
+
+6. Library Dependency:-
+------------------------
+Array :- Requires the array module or external libraries like NumPy for advanced operations.	
+List :- Built-in Python data structure (no additional library required).	
+Tuple :- Built-in Python data structure (no additional library required).
+
+
+7. Use Case	:
+-------------
+Array :- Used for mathematical computations and large datasets where all items are of the same type.	
+List :- Used for flexible data storage with mixed or dynamic content.	
+Tuple :- Used for fixed, read-only data to ensure values do not accidentally change.
+
+
+8. Creation Syntax:
+-------------------
+Array :- array('i', [1, 2, 3]) (for integers).	
+List :- [1, 2, "hello", 4.5].	
+Tuple :- (1, 2, "hello", 4.5).
+
+
+
+___________________________________________________________________________________________________________________
+
+
+39. What is map , reduce and filter function ?
+
+
+1. map:
+---------
+Applies a function to each item in a list (or any iterable) and returns a new iterable with the results.
+
+Example:
+-------
+Multiply each number in a list by 2:
+
+nums = [1, 2, 3, 4]
+result = map(lambda x: x * 2, nums)
+print(list(result))  # Output: [2, 4, 6, 8]
+
+
+
+Key Points:
+-----------
+Input: A function and an iterable.
+Output: A new iterable with the function applied to each item.
+
+
+
+2. filter:
+----------
+Filters items in a list (or iterable) based on a condition and returns only the items that satisfy the condition.
+
+Example:
+--------
+Keep only even numbers:
+
+nums = [1, 2, 3, 4, 5, 6]
+result = filter(lambda x: x % 2 == 0, nums)
+print(list(result))  # Output: [2, 4, 6]
+
+
+Key Points:
+-----------
+Input: A function (that returns True or False) and an iterable.
+Output: A new iterable with items that satisfy the condition.
+
+
+3. reduce (from functools module):
+----------------------------------
+Reduces a list (or iterable) to a single value by repeatedly applying a function to combine two items at a time.
+
+Example:
+---------
+Find the sum of all numbers in a list:
+
+from functools import reduce
+nums = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, nums)
+print(result)  # Output: 10
+
+
+Key Points:
+-----------
+Input: A function and an iterable.
+Output: A single value after reducing all items.
+
+
+
+
+Function	            Use Case	                          Input	                            Output
+
+map	                    Transform each item	                Function + Iterable	            New Iterable
+
+filter	         Keep items matching a condition	Function (returns True/False) + Iterable	Filtered Iterable
+
+reduce	            Combine all items into one value	    Function + Iterable	                Single Value
+
+
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+40. Set and Frozenset in Python ?
+Answer -->
+
+1. What is a Set?
+
+    A set is a collection of unique and unordered elements in Python.
+
+    Key Points:
+    Mutable: You can add or remove elements.
+    No Duplicates: Automatically removes duplicate elements.
+    Unordered: No indexing or slicing (e.g., no set[0]).
+    Optimized for Membership Testing: Checking if an item exists in a set is fast.
+
+    Example --->
+
+        my_set = {1, 2, 3, 4, 4}  # Duplicates are removed
+        print(my_set)  # Output: {1, 2, 3, 4}
+
+        my_set.add(5)  # Add an element
+        my_set.remove(2)  # Remove an element
+        print(my_set)  # Output: {1, 3, 4, 5}
+
+
+
+2. What is a Frozenset?
+    A frozenset is an immutable version of a set. Once created, it cannot be changed (no adding or removing elements).
+
+    Key Points:
+    Immutable: Cannot be modified after creation.
+    Hashable: Can be used as a key in a dictionary or an element in another set.
+    Unordered: Like a set, it does not support indexing or slicing.
+
+    Example -->
+
+    my_frozenset = frozenset([1, 2, 3, 4])
+    print(my_frozenset)  # Output: frozenset({1, 2, 3, 4})
+
+    # Immutable, so these operations are not allowed:
+    # my_frozenset.add(5) -> Raises AttributeError
+    # my_frozenset.remove(2) -> Raises AttributeError
+
+
+3. Differences Between Set and Frozenset ?
+
+    Feature	                        Set	                            Frozenset
+    Mutability	                    Mutable	                        Immutable
+    Duplicates Allowed	             No	                                No
+    Hashable	                     No	            Yes (can be used as a dictionary key or set element)
+    Modifications	    Supports adding/removing elements	Does not allow modifications
+    Usage	                    Dynamic collections	Fixed collections (e.g., when elements shouldn't change)
+
+
+
+___________________________________________________________________________________________________________________
+
+
+41. iter() and next() in Python.
+Answer ->
+________
+
+1. iter() Function:
+___________________
+The iter() function is used to convert an iterable (like a list, tuple, or string) into an iterator and if you print the iterator so its return the iterator objects.
+
+
+2. next() Function:
+___________________
+The next() function is used to get the next item from the iterator, one at a time.
+
+How next() works:
+Each time you call next(), it returns the next item in the sequence.
+If the iterator is exhausted (all items have been returned), next() raises a StopIteration exception.
+
+
+
+
+___________________________________________________________________________________________________________________
+
+42. What is Pickling and unpickling in Python ?
+Answer => 
+
+pickling and unpickling is a process in python to serialize and deserialize python objects.
+
+
+Pickling -> Pickling is a process to convert python object like ( list,dictionary). into the byte stream 
+_________  means binary format. This byte stream can be stored in a file or transmitted over a network.
+
+
+
+Example of Pickling ->
+____________________
+import pickle
+
+# Data to pickle
+data = {"name": "Alice", "age": 25, "skills": ["Python", "Machine Learning"]}
+
+# Writing to a file
+with open("data.pkl", "wb") as file:
+    pickle.dump(data, file)
+
+print("Data has been pickled and saved to 'data.pkl'.")
+
+
+
+
+
+Unpickling -> Unpickling is a reverse process of pickling it convert the byte stream into the python objects 
+-----------   It reads the binary data and recreates the object in memory.
+
+
+
+
+Example of Unpickling ->
+----------------------
+
+import pickle
+
+with open("data.pkl", "rb") as file:
+    loaded_data = pickle.load(file)
+
+print("Unpickled data:", loaded_data)
+
+
+
+
+Why we use Pickling and unpickling ->
+-----------------------------------
+1. Data persistence: Save program data to a file for later use.
+2. Data sharing: Share Python objects between programs or processes.
+3. Complex data handling: Serialize Python-specific data types (e.g., custom classes) that JSON can't handle.
+4. Performance: Easier and faster for Python-only projects.
+
+
+___________________________________________________________________________________________________________________
+
+
+43. Currying in Python ?
+Answer ->
+
+Curring is a technique in the functional programming. Where a function that takes multiple arguments is converted into a sequence of functions, each function taking one argument.
+
+In simple terms, currying allows us to break down a function that takes several parameters into multiple smaller functions, each accepting a single argument.
+
+
+
+
+Why We Use Currying:
+____________________
+1. Reusability: We can partially apply a function by fixing some arguments and passing the remaining ones later.
+
+2. Cleaner Code: Currying helps break down the code into smaller, modular functions, making the code more readable and maintainable.
+
+3. Flexibility: Currying makes it easy to create new functions by applying some arguments first and using them later for different contexts.
+
+
+
+Example of curring :
+_______________________
+
+def multiply(x):
+    def multiply_by_y(y):
+        def multiply_by_z(z):
+            return x * y * z
+        return multiply_by_z
+    return multiply_by_y
+
+# Pehle ek argument fix karte hain
+partial_function = multiply(2)
+
+# Baad mein baaki arguments pass karenge
+result = partial_function(3)(4)  # 2 * 3 * 4 = 24
+print(result)  # Output: 24
+
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+44. Shellow Copy and Deep Copy ?
+Answer -> 
+
+
+Whenever we work with mutable objects and want to create a copy, we have two types of copies available: shallow copy and deep copy.
+
+
+1. Shellow Copy => 
+
+A shallow copy creates a new object and copies the references of the nested objects instead of duplicating them. If you update a nested object in the copied object, the changes will also reflect in the original object because both share the same reference to the nested object.
+
+
+Example =>
+
+        import copy
+
+        original = [1, 2, [3, 4]]  # Original list with a nested list
+        shallow_copy = copy.copy(original)  # Create a shallow copy
+
+        # Modify the nested object in the copied list
+        shallow_copy[2][0] = 99
+
+        print("Original:", original)  # Output: [1, 2, [99, 4]]
+        print("Shallow Copy:", shallow_copy)  # Output: [1, 2, [99, 4]]
+
+
+        We can also use copy function 
+        Example =>
+
+        original = {1, 2, 3}
+        shallow_copy = original.copy()
+
+        print("Original:", original)
+        print("Shallow Copy:", shallow_copy)
+
+
+
+2. Deep Copy =>
+  
+  A deep copy creates a completely independent copy of an object. Unlike a shallow copy, a deep copy does not share references to nested objects between the original and the copy. If you make changes to the nested objects in the copy, it will not affect the original object.
+
+
+Example =>
+
+
+            import copy
+
+            l = [10,20,30,40,50,[1,2,3,4]]
+
+            deep_copy_example = copy.deepcopy(l)
+
+            # print(deep_copy_example)
+
+            deep_copy_example[5][1] = 20
+
+
+            print("origin :- ",l)
+            print("Copy :- ",deep_copy_example)
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+
+45. What is GIL (Global Interpreter Lock) ?
+Answer =>
+
+GIL stands for Global Interpreter Lock it is a mechanism that ensure that only one task executing at a time.
+This means that even if you have a multiple thread in your program. and only one thread  executing at a time.
+
+
+
+Why GIL exist in python
+_______________________
+Memory management: 
+
+The GIL helps to manage memory safely in Python, especially when there are multiple threads running. Without the GIL, threads could try to access and modify the same piece of memory simultaneously, causing race conditions and other bugs.
+
+
+
+How Does GIL Affect Multithreading?
+___________________________________
+1. Single-threaded performance (No problem with GIL)
+In a single-threaded program, the GIL is not an issue because there’s only one thread running. The program will work as expected, and it can take full advantage of the CPU core it’s running on.
+
+2. Multithreaded programs (GIL slows things down)
+In a multithreaded program (where you have more than one thread running), the GIL limits performance because it only allows one thread to run Python code at a time. So even if you have a multi-core processor, Python threads won't run in parallel on those cores. Instead, they take turns running, which can result in less efficient performance for CPU-heavy tasks.
+
+
+
+___________________________________________________________________________________________________________________
+
+
+
+46. What is the purpose of the @property decorator in Python?
+Answer =>
+
+
+The @property decorator in Python is a way to define a getter method that can be accessed like an attribute. In other words, it allows a method to be called without parentheses (like an attribute), but still perform some logic or computation behind the scenes.
+
+
+Example ->
+
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius  # Private attribute
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Radius cannot be negative!")
+        self._radius = value
+
+circle = Circle(5)
+print(circle.radius)  # Output: 5
+circle.radius = 10    # Updates radius to 10
+print(circle.radius)  # Output: 10
+circle.radius = -1    # Raises ValueError
+
+
+___________________________________________________________________________________________________________________
+
+
+47. What is a metaclass in Python and how does it differ from regular classes?
+Answer =>
+
+Metaclass is a special type of a class in python. its control the process of creating class. Whenever you create a new class so python internally it is use metaclass for creting a class.
+
+
+Example =>
+
+# Apna ek metaclass banate hain
+class MyMeta(type):
+    def __new__(cls, name, bases, dct):
+        print(f"Class {name} create ki ja rahi hai.")
+        return super().__new__(cls, name, bases, dct)
+
+# Ab hum ek class banayenge jisme yeh metaclass use hoga
+class MyClass(metaclass=MyMeta):
+    pass
+
+# Jab yeh run hoga, output yeh hoga:
+# Class MyClass create ki ja rahi hai.
+
+
+
+
+___________________________________________________________________________________________________________________
+
+
+
+48. What is the difference between append() and extend() methods in Python lists?
 
 So Both append() and extend() are used to add element in a list but they work differently -
 
@@ -918,77 +2798,12 @@ print(my_list)  # Output: [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 
-_____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
 
 
 
-19. What is class method and instance method ?
-
-
-
-Class Method:
--------------
-
-A class method is a method that belongs to the class itself rather than a specific object (instance). It works with class-level data, which is shared among all objects of the class.
-
-1. It is defined using the @classmethod decorator.
-2. The first parameter is cls, which refers to the class.
-3. Class methods are useful when you want to perform actions related to the class as a whole, such as working 
-    with  class variables or creating alternative ways to construct objects.
-
-
-Example of Class Method:
-------------------------
-class Car:
-    manufacturer = "Toyota"  # Class-level data (shared by all cars)
-
-    @classmethod
-    def get_manufacturer(cls):
-        return cls.manufacturer
-
-# You can call a class method without creating an object
-print(Car.get_manufacturer())  # Output: Toyota
-
-
-get_manufacturer is a class method that retrieves the class attribute manufacturer.
-It doesn't depend on any specific car object.
-
-    
-
- 
-
- What is an Instance Method?
- ---------------------------
-An instance method is the most common type of method in a class. It works on specific objects (instances) of the class.
-
-1. It is defined without any special decorator.
-2. The first parameter is self, which refers to the specific object calling the method.
-3. Instance methods can access and modify the attributes and behavior of the object they are called on.
-
-
-Example of Instance Method:
---------------------------
-
-class Car:
-    def __init__(self, model):
-        self.model = model  # Instance-level data (specific to an object)
-
-    def get_model(self):
-        return f"The car model is {self.model}"
-
-# Creating an instance of Car
-my_car = Car("Corolla")
-print(my_car.get_model())  # Output: The car model is Corolla
-
-
-get_model is an instance method that works with the attribute model specific to the my_car object.
-
-
-
-_____________________________________________________________________________________________________________________
-
-20. Dynamic Counting in Python?
+49. Dynamic Counting in Python?
 
 dynamic counting in Python refers to the process of tracking or updating counts dynamically (on the fly) as your program runs. It involves using variables, data structures like dictionaries, or built-in tools to count occurrences, events, or other elements during runtime.
 
@@ -1023,11 +2838,11 @@ print(count)  # Output: Counter({'apple': 3, 'banana': 2, 'orange': 1})
 
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
 
 
-21. What is the difference between yield and return in Python?
+50. What is the difference between yield and return in Python?
 
 return:
 ------
@@ -1090,9 +2905,11 @@ Creates	                    A value or a list of values.	A generator object (an 
 
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
-22. What is the difference between an iterator and an iterable in Python?
+
+
+51.What is the difference between an iterator and an iterable in Python?
 
 
 1. Iterable:
@@ -1148,108 +2965,11 @@ Here, the iterator fetches one item at a time. Once it runs out of items, callin
 
 
 
-____________________________________________________________________________________________________________________
-
-
-23. Difference between list , tuple and array
-
-1. Defination:
---------------
-Array:- A collection of elements of the same data type stored in a contiguous memory block.	
-List :- A flexible collection of elements of any data type that can grow or shrink dynamically.	
-Tuple :- An immutable collection of elements of any data type that cannot be changed after creation.
+___________________________________________________________________________________________________________________
 
 
 
-2. Mutability:
----------------
-Array :-  Mutable (you can modify, add, or remove elements).	
-List :- Mutable (you can modify, add, or remove elements).	
-Tuple :- Immutable (once created, elements cannot be modified).
-
-
-3. Size Modification:
----------------------
-Array :- Can grow or shrink dynamically.	
-List :- Can grow or shrink dynamically.	
-Tuple :- Fixed size after creation (cannot add or remove elements).
-
-
-4. Performance:
----------------
-Array :- Faster for numerical computations because of fixed data types.	
-List :- Slightly slower for numerical tasks but flexible for general usage.	
-Tuple :- More memory-efficient and faster to access due to immutability.
-
-
-
-5. Memory Usage:
------------------
-Array :- Efficient for large datasets of the same type.	
-List:- Requires more memory for mixed-type storage.	
-Tuple :- Most memory-efficient because of immutability.
-
-
-6. Library Dependency:-
-------------------------
-Array :- Requires the array module or external libraries like NumPy for advanced operations.	
-List :- Built-in Python data structure (no additional library required).	
-Tuple :- Built-in Python data structure (no additional library required).
-
-
-7. Use Case	:
--------------
-Array :- Used for mathematical computations and large datasets where all items are of the same type.	
-List :- Used for flexible data storage with mixed or dynamic content.	
-Tuple :- Used for fixed, read-only data to ensure values do not accidentally change.
-
-
-8. Creation Syntax:
--------------------
-Array :- array('i', [1, 2, 3]) (for integers).	
-List :- [1, 2, "hello", 4.5].	
-Tuple :- (1, 2, "hello", 4.5).
-
-
-
-____________________________________________________________________________________________________________________
-
-
-24. What is pep8?
-
-Yes, PEP 8 is a style guide for Python code that provides conventions for writing clean, readable, and consistent Python code. It is the official style guide for Python, and following its guidelines ensures that Python code is easy to read and maintain, both for individuals and teams.
-
-
-
-
-
-____________________________________________________________________________________________________________________
-
-
-
-25. what is __init__ ?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-____________________________________________________________________________________________________________________
-
-
-
-26. What is closure in python ?
+52. What is closure in python ?
 
 
 In simple words, a closure in Python is a function inside another function that remembers and can use variables from its outer function, even after the outer function has finished running.
@@ -1284,10 +3004,10 @@ print(my_closure(5))  # Output: 15
 In short, a closure allows an inner function to remember and use variables from its outer function even after the outer function has finished.
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
 
-27. What is the interface in oops ?
+53. What is the interface in oops ?
 
 
 In Object-Oriented Programming (OOP), an interface is a blueprint for a class. It defines a set of methods (but not their implementation) that a class must implement. An interface provides a way to enforce certain behaviors on the classes that implement it, ensuring consistency across different classes without dictating how the methods are executed.
@@ -1332,29 +3052,10 @@ bird = Bird()
 print(dog.speak())  # Output: Bark
 print(bird.move())  # Output: Flies
 
-____________________________________________________________________________________________________________________
-
-28. What is a context manager in Python, and how is it used?
+___________________________________________________________________________________________________________________
 
 
-
-
-
-
-
-____________________________________________________________________________________________________________________
-
-29. How do you create a custom context manager in Python?
-
-
-
-
-
-
-
-____________________________________________________________________________________________________________________
-
-30. What is the hashing technique in Python?
+54. What is the hashing technique in Python?
 
 The hashing technique in Python is a method of converting data (like strings, numbers, or objects) into a fixed-size integer value, called a hash value or hash code. Hashing is primarily used in data structures like hash tables and sets for fast data access, and for verifying data integrity in cryptographic operations.
 
@@ -1393,26 +3094,11 @@ value = "hello"
 hash_value = hash(value)
 print(hash_value)  # Output: An integer (hash value)
 
+___________________________________________________________________________________________________________________
 
 
 
-
-
-
-____________________________________________________________________________________________________________________
-
-31. How can you determine which task has completed in a multithreaded environment?
-
-
-
-
-
-
-
-
-____________________________________________________________________________________________________________________
-
-32. what is class method , static method , and instance method?
+55. what is class method , static method , and instance method?
 
 
 1. Instance Method:
@@ -1474,10 +3160,11 @@ class Dog:
 
 print(Dog.info())  # Output: Dogs are loyal animals.
 
+___________________________________________________________________________________________________________________
 
-____________________________________________________________________________________________________________________
 
-34.  What is the difference between synchronous and asynchronous programming languages?
+
+56. What is the difference between synchronous and asynchronous programming languages?
 
 
 
@@ -1567,10 +3254,12 @@ Example Scenario            	Reading files line-by-line.	                Handlin
 
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
 
-36. What is the heap memory and stack memory?
+
+
+57. What is the heap memory and stack memory?
 
 
 
@@ -1621,16 +3310,10 @@ Management	                Cleared automatically after function ends.	Managed by
 Analogy	                            Like a stack of plates.	                    Like a big storage room.
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
 
-
-
-
-
-____________________________________________________________________________________________________________________
-
-38. Difference between cls and self in class and instance methods?
+58. Difference between cls and self in class and instance methods?
 
 
 What is self:
@@ -1674,9 +3357,10 @@ Dog.set_species("Wolf")  # Change species for the entire class
 print(Dog.species)  # Output: Wolf
 
 
-____________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 
-39. Method Resolution Order (MRO)?
+
+59. Method Resolution Order (MRO)?
 
 MRO (Method Resolution Order) is the order in which Python looks for a method or attribute in a class and its parent classes when you call it. It’s like a roadmap that tells Python where to search first, second, and so on.
 
@@ -1791,7 +3475,75 @@ help(D)
 
 
 
+__________________________________________________________________________________________________________________
 
 
-____________________________________________________________________________________________________________________
+60. What is dir() and help() functions in Python ?
+
+
+The dir() and help() functions in Python are built-in tools that help you explore and understand objects, modules, and functions.
+
+1. dir() Function
+-----------------
+The dir() function is used to:
+------------------------------
+List all the attributes and methods (including built-ins) of an object, class, or module.
+Explore what you can access in a given scope.
+
+Usage:
+------
+
+# Example 1: Listing attributes of an object
+print(dir(str))  # Lists all methods and attributes of the string class
+
+# Example 2: Checking attributes in the current scope
+x = 10
+print(dir())  # Lists variables and imports in the current scope
+
+# Example 3: Exploring a module
+import math
+print(dir(math))  # Lists all available functions in the math module
+2. help() Function
+
+
+The help() function provides:
+----------------------------
+Detailed documentation about an object, function, class, or module.
+Information such as the purpose, parameters, and examples (if available in the docstring).
+
+Usage:
+------
+
+# Example 1: Getting help about a class
+help(str)
+
+# Example 2: Getting help about a specific method
+help(math.sqrt)
+
+# Example 3: General interactive help
+
+help()  # Opens an interactive help session
+
+
+
+
+Feature	                                dir()	                                         help()
+
+Purpose	                Lists available attributes and methods.	            Provides detailed documentation.
+
+Output	                       Returns names (as a list).               	Prints a detailed explanation.
+
+Focus	                            More exploratory.	                More descriptive and educational.
+
+
+___________________________________________________________________________________________________________________
+
+
+
+
+            Only File handling releated interview Question are lefts
+
+
+
+
 
